@@ -3,17 +3,14 @@ import { nav, sidebar } from './configs'
 
 
 export default defineConfig({
-    // 打包输出目录
-    outDir: '../dist',
-    base: "/blog/",
-
+    base: "/alexshwing-blog/",
 
     lang: 'zh-CN',
     title: `Alexshwing`,
     description: `Alexshwing's blog`,
 
     lastUpdated: true,
-    
+
     themeConfig: {
         i18nRouting: false,
         logo: '/logo.png',
