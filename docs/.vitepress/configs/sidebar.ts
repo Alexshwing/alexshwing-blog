@@ -60,6 +60,7 @@ export const sidebar: DefaultTheme.Config['sidebar'] = {
             collapsed: false,
             items: [
                 { text: 'NPM', link: '/backend/nodejs/npm' },
+                { text: '文件系统', link: '/backend/nodejs/fileSystem' },
                 { text: '文件上传', link: '/backend/nodejs/fileUpload' },
             ]
         },
