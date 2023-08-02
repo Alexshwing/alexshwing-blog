@@ -61,6 +61,7 @@ export const sidebar: DefaultTheme.Config['sidebar'] = {
             items: [
                 { text: 'NPM', link: '/backend/nodejs/npm' },
                 { text: '文件系统', link: '/backend/nodejs/fileSystem' },
+                { text: 'HTTP', link: '/backend/nodejs/http' },
                 { text: '文件上传', link: '/backend/nodejs/fileUpload' },
             ]
         },
