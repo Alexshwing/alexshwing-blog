@@ -128,21 +128,13 @@ res.end('xx')
 - 绝对路径
 可靠性强, 而且相对容易理解, 在项目中运用较多
 
-| 形式                      |                                  特点                                  |
-| ------------------------- | :--------------------------------------------------------------------: |
-| http://alexshwing.com/web |        直接向目标资源发送请求，容易理解。网站的外链会用到此形式        |
-| //alexshwing.com/web      |    与页面 URL 的协议拼接形成完整 URL 再发送请求。大型网站用的比较多    |
-| /web                      | 与页面 URL 的协议、主机名、端口拼接形成完整 URL 再发送请求。中小型网站 |
+![绝对路径](./assets/http-03.png)
 
 - 相对路径
 需要与当前页面`URL`进行计算, 得到完整`URL`后再发送请求
 当前网页`URL`为`http://www.alexshwing.com/course/h5.html`
 
-| 形式            |                     特点                     |
-| --------------- | :------------------------------------------: |
-| ./css/app.css   | http://www.alexshwing.com/course/css/app.css |
-| js/app.js       |  http://www.alexshwing.com/course/js/app.js  |
-| ../img/logo.png |    http://www.alexshwing.com/img/logo.png    |
+![相对路径](./assets/http-04.png)
 
 ### 7. 3 设置资源类型(mine类型)
 媒体类型(`MIME`类型)是一种标准, 用来表示文档、文件或字节流的性质和格式
