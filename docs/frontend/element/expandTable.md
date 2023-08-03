@@ -1,6 +1,6 @@
 # 展开行表格
 
-## 1. expandTable.vue
+## 一. 基本结构
 ```vue
 <template>
   <div class="container">
@@ -123,7 +123,7 @@ export default {
 </script>
 
 ```
-## 2. 获取展开行内选中项
+## 二. 获取展开行内选中项
 ```javascript
 /**
  * 获取所有展开行内的表格
@@ -149,7 +149,7 @@ function printSelectedProductId() {
   console.log(selectedProductIdList)
 },
 ```
-## 3. 锚点到某一行
+## 三. 锚点到某一行
 ```javascript
 function scrollToRow(pos = 8) {
     // 获取最外层表格ref

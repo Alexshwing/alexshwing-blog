@@ -1,6 +1,6 @@
 # 手写
 
-## 1. 数组
+## 一. 数组
 ### forEach
 ```js
 Array.prototype.myForEach = function (callback) {
@@ -184,7 +184,7 @@ function myUnique(arr) {
 }
 ```
 
-## 2. 对象
+## 二. 对象
 ### 判断类型
 ```js
 const arr = [1, Number(1), "1", true, null, undefined, BigInt(1), Symbol(1), {}, [], new Date(), new RegExp()];
@@ -193,7 +193,7 @@ function type(target) {
 }
 ```
 
-## 3. 优化
+## 三. 优化
 ### 防抖
 防止抖动, 单位时间内触发就会重置, 避免事件被触发多次
 

@@ -17,7 +17,7 @@ export const nav: DefaultTheme.Config['nav'] = [
     {
         text: '后端',
         items: [
-            { text: 'Node.js', link: '/backend/nodejs/' },
+            { text: 'Node.js', link: '/backend/nodejs/npm' },
             { text: 'Python', link: '/backend/python/' },
         ]
     },

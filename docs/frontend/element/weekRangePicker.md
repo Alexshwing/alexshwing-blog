@@ -4,7 +4,7 @@
 [手撸Element源码，完善日期选择器功能，范围选择器周、季、年](https://juejin.cn/post/7239225588065042493)
 :::
 
-## 准备工作
+## 一、准备工作
 从 `node_modules\element-ui\packages\date-picker` 复制 `日期选择器` 源码在项目中使用
 ```vue
 <template>
@@ -28,7 +28,7 @@ export default {
 </script>
 ```
 
-## 周选择器面板显示周数
+## 二、周选择器面板显示周数
 在 `src/basic/date-table.vue` 中 `props` 中接受一个参数 `showWeekNumber` 这个用于显示周数, 只是父组件没有写入
 
 
@@ -214,7 +214,7 @@ parsedValue() {
 ```
 ![周选择器面板显示周数](./assets/weekRangePicker-02.png)
 
-## 周选择日期范围
+## 三、周选择日期范围
 
 **思路**: 通过`src/picker/date-picker.js`文件可以发现 `elementUI` 做了几个模式然后通过不同的`type`获取不同的日期面板，所以可以把日模式日期选择改造成周模式日期选择器
 

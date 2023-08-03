@@ -2,7 +2,7 @@
 ```js
 const fs = require("fs")
 ```
-## 文件写入
+## 一、文件写入
 ### 1. 异步写入
 - `fs.writeFile(file, data[, options], callback`
   - `file` 文件名
@@ -61,7 +61,7 @@ ws.write("4\r\n")
 - 编辑器保存文件
 - 视频录制
 
-## 文件读取
+## 二、文件读取
 ### 1. 异步读取
 - `fs.readFile(path[, options], callback)`
 - Returns `undefined`
@@ -102,7 +102,7 @@ rs.on('end', () => {
 - 上传文件
 - 查看聊天记录
 
-## 文件移动和重命名
+## 三、文件移动和重命名
 - `fs.rename(oldPath, newPath, callback)`
 - `fs.renameSync(oldPath, newPath)`
   - `oldPath` 当前文件路径
@@ -114,7 +114,7 @@ fs.rename('./test.txt', './file/test.txt', err => {
 })
 fs.renameSync('./test.txt', './alex.txt')
 ```
-## 文件删除
+## 四、文件删除
 - `fs.unlink(path, callback)`
 - `fs.unlinkSync(path)`
 ```js
@@ -124,7 +124,7 @@ fs.unlink("./test.txt", err => {
 })
 fs.unlinkSync("./test.txt")
 ```
-## 文件夹操作
+## 五、文件夹操作
 ### 1. 创建文件夹
 - `fs.mkdir(path[, options], callback)`
 - `fs.mkdirSync(path[, options])`
@@ -167,7 +167,7 @@ fs.rmdir("./1/2/3", { recursive: true }, err => {
 })
 fs.rmdirSync("./x/y/x", { recursive: true })
 ```
-## 查看资源状态
+## 六、查看资源状态
 - `fs.stat(path[, options], callback)`
 - `fs.statSync(path[, options])`
 ```js
@@ -185,7 +185,7 @@ const res = fs.statSync("./test.txt")
   - `isDirectory` 检测是否为文件夹
   - ...
 
-## 相对路径与绝对路径
+## 七、相对路径与绝对路径
 - 相对路径
   - `./test.txt | test.txt`
   - `../test.txt`
@@ -193,14 +193,14 @@ const res = fs.statSync("./test.txt")
   - `D:/test.txt` `Windows`系统下
   - `/usr/bin` `Linux`系统下
 
-## __dirname
+## 八、__dirname
 当前文件所在目录的绝对路径
 ```js
 const data = fs.readFileSync(__dirname + '/data.txt')
 console.log(data)
 ```
 
-## path 模块
+## 九、path 模块
 - `path.resolve` 拼接规范的绝对路径常用
 - `path.seq` 获取操作系统的路径分隔符
 - `path.parse` 解析路径并返回对象
@@ -224,7 +224,7 @@ console.log(path.dirname(pathname));
 console.log(path.extname(pathname));
 ```
 
-## 管道流
+## 十、管道流
 流式文件读写
 ```js
 const rs = fs.createReadStream("a.txt")

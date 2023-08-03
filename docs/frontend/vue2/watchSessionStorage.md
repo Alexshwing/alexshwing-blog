@@ -1,7 +1,7 @@
 # 监听 SessionStorage
 
 ## 1. 用`StorageEvent`重写`setSessionStorage`
-### main.js
+- main.js
 ```javascript
 Vue.prototype.setSessionItem = function(key, newVal) {
   if (key === 'number') {
@@ -26,7 +26,7 @@ Vue.prototype.setSessionItem = function(key, newVal) {
 }
 ```
 ## 2. 修改时调用`setSessionItem`
-### App.vue
+- App.vue
 ```vue
 <template>
   <div id="app">
@@ -66,7 +66,7 @@ export default {
 </script>
 ```
 ## 3. 在需要获取数据的地方监听
-### AboutView.vue
+- AboutView.vue
 ```vue
 <template>
   <div>{{ number }}</div>

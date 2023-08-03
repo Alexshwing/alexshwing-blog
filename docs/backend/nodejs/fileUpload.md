@@ -1,10 +1,10 @@
 # 文件上传
 
-## 1. 安装
+## 一. 安装
 ```shell
 npm i express multer --save
 ```
-## 2. `Multer`实现文件上传
+## 二. `Multer`实现文件上传
 ```javascript
 const express = require("express")
 const multer = require("multer")
@@ -45,7 +45,7 @@ app.listen(3000, () => {
     console.log("express server running at http://127.0.0.1")
 })
 ```
-## 3. `index.html`
+## 三. 前端
 ```html
 <!DOCTYPE html>
 <html lang="en">

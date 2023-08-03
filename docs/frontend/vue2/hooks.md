@@ -1,5 +1,5 @@
 # @hook
-## 1. 介绍
+## 一. 介绍
 > `@hook`用来监听组件生命周期的回调函数
 
 
@@ -36,7 +36,7 @@ export function callHook(
 ```
 从这段源码我们可以看到`hook`部分调用逻辑, `vm.$emit('hook:' + hook)`其实就是在调用我们写的`@hook:mounted=xxx`
 
-## 2. 用法
+## 二. 用法
 ### 1. 统一书写多个生命周期逻辑
 ```vue
 <script>
@@ -94,8 +94,8 @@ function ButtonRender() {
     console.log('渲染完成')
 }
 ```
-## 3. 应用场景
-### 定时器销毁
+## 三. 应用场景
+### 1. 定时器销毁
 ```vue
 <script>
 export default {
@@ -109,7 +109,7 @@ export default {
 }
 </script>
 ```
-### 如果属于同一业务的逻辑要在不同的生命周期中执行，下面这样会更利于阅读和维护
+### 2. 如果属于同一业务的逻辑要在不同的生命周期中执行，下面这样会更利于阅读和维护
 ```vue
 <script>
 export default {
@@ -128,7 +128,7 @@ export default {
 </script>
 ```
 
-### 监听第三方组件生命周期
+### 3. 监听第三方组件生命周期
 ```vue
 <el-button type="primary" @hook:mounted="ButtonRender" :disabled="disabled">{{name}}</el-button>
 

@@ -1,6 +1,6 @@
 # 组件渲染顺序
 使用场景: 兄弟组件渲染时, 其中一个组件的数据依赖另一个组件
-### About.vue
+## 父组件
 ```vue
 <template>
   <div class="container">
@@ -24,7 +24,7 @@ export default {
 }
 </script>
 ```
-### Bar.vue
+## 兄组件
 ```vue
 <template>
   <div>Bar</div>
@@ -43,7 +43,7 @@ export default {
 </script>
 
 ```
-### Foo.vue
+## 弟组件
 ```vue
 <template>
   <div>
