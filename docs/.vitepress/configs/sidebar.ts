@@ -15,6 +15,7 @@ export const sidebar: DefaultTheme.Config['sidebar'] = {
             items: [
                 { text: '执行上下文与作用域', link: '/frontend/javascript/executionContext' },
                 { text: '工具函数', link: '/frontend/javascript/utils' },
+                { text: '手写', link: '/frontend/javascript/handWriting' },
             ]
         },
         {
@@ -62,6 +63,7 @@ export const sidebar: DefaultTheme.Config['sidebar'] = {
                 { text: 'NPM', link: '/backend/nodejs/npm' },
                 { text: '文件系统', link: '/backend/nodejs/fileSystem' },
                 { text: 'HTTP', link: '/backend/nodejs/http' },
+                { text: '模块化', link: '/backend/nodejs/module' },
                 { text: '文件上传', link: '/backend/nodejs/fileUpload' },
             ]
         },
