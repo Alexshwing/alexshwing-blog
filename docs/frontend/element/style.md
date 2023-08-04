@@ -29,3 +29,9 @@ export default {
 }
 </style>
 ```
+## 表格单元格为空填充占位符
+```scss
+::v-deep .el-table .el-table__body td .cell:empty::after {
+  content: "-";
+}
+```

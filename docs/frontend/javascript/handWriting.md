@@ -253,3 +253,108 @@ function type(target) {
   window.addEventListener("scroll", throttle(request, 1000));
 </script>
 ```
+
+## 四、树
+### 树转列表
+```js
+const tree = [
+  {
+    id: 1,
+    name: "node-1",
+    children: [
+      {
+        id: 2,
+        name: "node-1-1",
+        children: [
+          {
+            id: 3,
+            name: "node-1-1-1",
+            children: [],
+          },
+          {
+            id: 4,
+            name: "node-1-1-2",
+          },
+        ],
+      },
+    ],
+  },
+];
+```
+```js
+function tree2List(tree) {
+  const res = [];
+  function dfs(arr, depth = 0) {
+    for (const u of arr) {
+      res.push({ ...u, depth });
+      if (u.children && u.children.length > 0) {
+        dfs(u.children, depth + 1);
+      }
+    }
+  }
+  dfs(tree);
+  return res;
+}
+```
+### 列表转树
+```js
+const arr = [
+  { id: 1, name: "node-1", pid: 0 },
+  { id: 2, name: "node-2", pid: 1 },
+  { id: 3, name: "node-3", pid: 1 },
+  { id: 4, name: "node-4", pid: 3 },
+  { id: 5, name: "node-5", pid: 4 },
+  { id: 6, name: "node-6", pid: 0 },
+];
+```
+```js
+function list2Tree(arr) {
+  const res = [],
+    mp = {};
+  for (const item of arr) {
+    const { id, pid } = item;
+    if (!mp[id]) {
+      mp[id] = { children: [] };
+    }
+    mp[id] = { ...item, children: mp[id].children };
+    if (pid === 0) {
+      res.push(mp[id]);
+    } else {
+      if (!mp[pid]) {
+        mp[pid] = { children: [] };
+      }
+      mp[pid].children.push(mp[id]);
+    }
+  }
+  return res;
+}
+```
+
+### 树添加属性
+```js
+const tree = [
+  {
+    name: "node-1",
+    children: [
+      {
+        name: "node-2",
+        children: [{ name: "node-3" }],
+      },
+      {
+        name: "node-4",
+      },
+    ],
+  },
+];
+```
+```js
+let index = 0;
+function addProp(tree, propName) {
+  return tree.map((item) => ({
+    ...item,
+    [propName]: index++,
+    children: item.children ? addProp(item.children, propName) : [],
+  }));
+}
+console.log(addProp(tree, "pos"));
+```
