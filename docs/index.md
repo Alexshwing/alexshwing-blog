@@ -9,8 +9,8 @@ hero:
     alt: VitePress
   actions:
     - theme: alt
-      text: View on Gitee
-      link: https://gitee.com/alexshwing
+      text: View on Github
+      link: https://github.com/Alexshwing
 features:
   - icon: 🛠️
     title: Simple and minimal, always

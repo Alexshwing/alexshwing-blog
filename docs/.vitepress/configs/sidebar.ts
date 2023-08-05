@@ -18,27 +18,7 @@ export const sidebar: DefaultTheme.Config['sidebar'] = {
                 { text: '手写', link: '/frontend/javascript/handWriting' },
             ]
         },
-        {
-            text: 'Vue2',
-            collapsed: false,
-            items: [
-                { text: '组件渲染顺序', link: '/frontend/vue2/componentsRenderOrder' },
-                { text: '@hook', link: '/frontend/vue2/hooks' },
-                { text: 'JSX', link: '/frontend/vue2/JSX' },
-                { text: '替换路由', link: '/frontend/vue2/replaceRoutes' },
-                { text: '监听 SessionStorage', link: '/frontend/vue2/watchSessionStorage' },
-            ]
-        },
-        {
-            text: 'Element',
-            collapsed: false,
-            items: [
-                { text: '展开行表格', link: '/frontend/element/expandTable' },
-                { text: '表单转为表格', link: '/frontend/element/formTransformtoTable' },
-                { text: '周范围选择器', link: '/frontend/element/weekRangePicker' },
-                { text: '样式', link: '/frontend/element/style' },
-            ]
-        },
+
         {
             text: 'Utils',
             collapsed: false,
@@ -54,6 +34,39 @@ export const sidebar: DefaultTheme.Config['sidebar'] = {
                 { text: '项目', link: '/frontend/camp/project' },
             ]
         }
+    ],
+    '/vue/': [
+        {
+            text: 'Vue2',
+            collapsed: false,
+            items: [
+                { text: '组件渲染顺序', link: '/vue/vue2/componentsRenderOrder' },
+                { text: '@hook', link: '/vue/vue2/hooks' },
+                { text: 'JSX', link: '/vue/vue2/JSX' },
+                { text: '替换路由', link: '/vue/vue2/replaceRoutes' },
+                { text: '监听 SessionStorage', link: '/vue/vue2/watchSessionStorage' },
+            ]
+        },
+        {
+            text: 'Vue3',
+            collapsed: false
+        },
+        {
+            text: 'Element',
+            collapsed: false,
+            items: [
+                { text: '展开行表格', link: '/vue/element/expandTable' },
+                { text: '表单转为表格', link: '/vue/element/formTransformtoTable' },
+                { text: '周范围选择器', link: '/vue/element/weekRangePicker' },
+                { text: '样式', link: '/vue/element/style' },
+            ]
+        },
+    ],
+    '/engineering/': [
+        {
+            text: 'Webpack',
+            collapsed: false,
+        },
     ],
     '/backend/': [
         {
