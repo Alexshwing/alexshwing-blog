@@ -67,6 +67,27 @@ export const sidebar: DefaultTheme.Config['sidebar'] = {
             text: 'Webpack',
             collapsed: false,
         },
+        {
+            text: 'Git',
+            collapsed: false,
+        },
+    ],
+    '/project/': [
+        {
+            text: '场景',
+            collapsed: false,
+            items: [
+                { text: 'print', link: '/project/scene/print' }
+            ]
+        },
+        {
+            text: '工具',
+            collapsed: false,
+        },
+        {
+            text: '个人项目',
+            collapsed: false
+        }
     ],
     '/backend/': [
         {
