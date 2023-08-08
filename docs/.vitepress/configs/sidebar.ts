@@ -73,6 +73,9 @@ export const sidebar: DefaultTheme.Config['sidebar'] = {
         {
             text: 'Git',
             collapsed: false,
+            items: [
+                { text: 'commit 规范', link: '/engineering/git/commit' }
+            ]
         },
     ],
     '/project/': [
