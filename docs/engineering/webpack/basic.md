@@ -15,7 +15,7 @@ webpack 是一个静态资源打包工具
 ### 初体验
 
 1. 文件结构
-```
+```shell
 webpack_demo # 项目根目录
     └── src # 项目源码目录
         ├── js # js文件目录
@@ -71,15 +71,24 @@ npx webpack ./src/main.js --mode=production
 ## 二、基本配置
 ### 核心概念
 1. entry (入口)
+
 指示 webpack 使用哪个模块作为构建其内部依赖图的开始, 默认值为 ./src/index.js 
+
 2. output (输出)
+
 告诉 webpack 在哪里输出它所创建的 bundle, 以及如何命名文件。
 要输出文件的默认值为 ./dist/main.js , 其他生成文件放置在 ./dist 文件夹中
+
 3. loader (加载器)
+
 webpack 只能理解 JavaScript 和 Json 文件, 通过 loader 使得 webpack 能够去处理其他类型的文件, 并将它们转换为有效模块, 以供应用程序使用, 以及添加到依赖图中
+
 4. plugins (插件)
+
 loader 用于转换某些类型的模块, 而插件而可以用于执行范围更广的任务。包括: 打包优化, 资源管理, 注入变量
+
 5. mode (模式)
+
 默认值为 production 
 
 ### 添加配置文件
@@ -217,10 +226,29 @@ module: {
 }
 ```
 
-
 ## 七、处理字体图标资源
+```js
+{
+  test: /\.(ttf|woff2?)$/,
+  type: 'asset/resource',
+  generator: {
+    filename: 'static/media/[hash:8][ext][query]'
+  }
+},
+```
+  - `type: 'asset/resource'` 相当于 `file-loader`, 将文件转化为 Webpack 能识别的资源, 其他不做处理
+  - `type: 'asset'` 相当于 `url-loader` 将文件转化为 Webpack 能识别的资源, 同时小于某个大小的资源会处理成 data URI 形式 
 
 ## 八、处理其他资源
+```js{2}
+{
+  test: /\.(ttf|woff2?|map4|map3|avi)$/,
+  type: "asset/resource",
+  generator: {
+    filename: "static/media/[hash:8][ext][query]",
+  },
+},
+```
 
 ## 九、EsLint
 检测 js 和 jsx 语法的工具, 通过写 Eslint 配置文件, 里面编写各种 rules 规则, 用这些规则检查代码
@@ -228,7 +256,7 @@ module: {
 ```shell
 npm i eslint-webpack-plugin eslint -D
 ```
-2. 配置文件
+2. eslint 配置
 - .eslintrc.* 新建文件, 位于项目根目录
   - eslintrc
   - eslintrc.js
@@ -262,7 +290,7 @@ module.exports = {
   // 其他规则详见: https://eslint.bootcss.com/docs/user-guide/configuring
 };
 ```
-3. webpack 配置中引入插件
+3. 配置 webpack
 ```js
 const ESLintWebpackPlugin = require("eslint-webpack-plugin");
 module.exports = {
@@ -285,7 +313,7 @@ JavaScript 编译器
 ```shell
 npm i babel-loader @babel/core @babel/preset-env -D
 ```
-2. 配置文件
+2. bebel 配置
 - babel.config.* 新建文件, 位于项目根目录
   - babel.config.js
   - babel.config.json
@@ -305,7 +333,7 @@ module.exports = {
   presets: ["@babel/preset-env"]
 }
 ```
-2. 将 babel-loader 添加到 module 列表中
+3. 配置 webpack
 ```js
 module: {
   rules: [
@@ -370,7 +398,136 @@ npx webpack serve
 - 优化代码打包速度
 
 ## 十四、css 处理
+### 提取 css 成单独的文件
+css 文件目前被打包到 js 文件中, 当 js 文件加载时, 会创建一个 style 标签来生成样式
 
+这样对于网站来说, 会出现闪屏现象, 用户体验不好
+
+我们应该是单独的 css 文件, 通过 link 标签加载性能才好
+
+1. 安装包
+```shell
+npm i mini-css-extract-plugin -D
+```
+2. 配置
+```js{1,10,14,18,22,26-30}
+const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+
+module.exports = {
+  module: {
+    rules: [
+      {
+        // 用来匹配 .css 结尾的文件
+        test: /\.css$/,
+        // use 数组里面 Loader 执行顺序是从右到左
+        use: [MiniCssExtractPlugin.loader, "css-loader"],
+      },
+      {
+        test: /\.less$/,
+        use: [MiniCssExtractPlugin.loader, "css-loader", "less-loader"],
+      },
+      {
+        test: /\.s[ac]ss$/,
+        use: [MiniCssExtractPlugin.loader, "css-loader", "sass-loader"],
+      },
+      {
+        test: /\.styl$/,
+        use: [MiniCssExtractPlugin.loader, "css-loader", "stylus-loader"],
+      },
+  },
+  plugins: [
+    // 提取css成单独文件
+    new MiniCssExtractPlugin({
+      // 定义输出文件名和目录
+      filename: "static/css/main.css",
+    }),
+  ],
+};
+```
+### 兼容性处理
+1. 安装包
+```shell
+npm i postcss-loader postcss postcss-preset-env -D
+```
+2. 配置
+- webpack.prod.js
+```js{1,4-20,29,33,37,41}
+const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+
+// 获取处理样式的Loaders
+const getStyleLoaders = (preProcessor) => {
+  return [
+    MiniCssExtractPlugin.loader,
+    "css-loader",
+    {
+      loader: "postcss-loader",
+      options: {
+        postcssOptions: {
+          plugins: [
+            "postcss-preset-env", // 能解决大多数样式兼容性问题
+          ],
+        },
+      },
+    },
+    preProcessor,
+  ].filter(Boolean);
+};
+
+module.exports = {
+  module: {
+    rules: [
+      {
+        // 用来匹配 .css 结尾的文件
+        test: /\.css$/,
+        // use 数组里面 Loader 执行顺序是从右到左
+        use: getStyleLoaders(),
+      },
+      {
+        test: /\.less$/,
+        use: getStyleLoaders("less-loader"),
+      },
+      {
+        test: /\.s[ac]ss$/,
+        use: getStyleLoaders("sass-loader"),
+      },
+      {
+        test: /\.styl$/,
+        use: getStyleLoaders("stylus-loader"),
+      },
+    ],
+  },
+};
+```
+
+- package.json 
+
+添加 browser 控制样式兼容性控制程度
+```json
+{
+  // 其他省略
+  "browserslist": ["last 2 version", "> 1%", "not dead"]
+}
+```
+想要知道更多的 browserslist 配置，查看 [browserslist文档](https://github.com/browserslist/browserslist) 
+
+### css 压缩
+1. 安装包
+```shell
+npm i css-minimizer-webpack-plugin -D
+```
+2. 配置
+- webpack.prod.js
+```js{1,5-6}
+const CssMinimizerPlugin = require("css-minimizer-webpack-plugin");
+
+module.exports = {
+  plugins: [
+    // css压缩
+    new CssMinimizerPlugin(),
+  ],
+};
+```
 ## 十五、html 压缩
+默认生产模式已经开启了: html 压缩和 js 压缩
 
-## 总结
+不需要额外进行配置
