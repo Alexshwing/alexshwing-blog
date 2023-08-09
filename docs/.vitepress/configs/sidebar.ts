@@ -20,10 +20,10 @@ export const sidebar: DefaultTheme.Config['sidebar'] = {
         },
 
         {
-            text: 'HandWriting',
+            text: 'Utils',
             collapsed: false,
             items: [
-                { text: '千分位格式化', link: '/frontend/handwriting/thousandsSeparator' },
+                { text: '千分位格式化', link: '/frontend/Utils/thousandsSeparator' },
             ]
         },
         {
@@ -31,6 +31,7 @@ export const sidebar: DefaultTheme.Config['sidebar'] = {
             collapsed: false,
             items: [
                 { text: '前端与 HTML', link: '/frontend/camp/html' },
+                { text: '深入浅出 TypeScript', link: '/frontend/camp/typescript' },
                 { text: '项目', link: '/frontend/camp/project' },
             ]
         }
