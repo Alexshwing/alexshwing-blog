@@ -20,10 +20,10 @@ export const sidebar: DefaultTheme.Config['sidebar'] = {
         },
 
         {
-            text: 'Utils',
+            text: 'HandWriting',
             collapsed: false,
             items: [
-                { text: '打印', link: '/frontend/utils/print' },
+                { text: '千分位格式化', link: '/frontend/handwriting/thousandsSeparator' },
             ]
         },
         {
