@@ -8,7 +8,7 @@ export const nav: DefaultTheme.Config['nav'] = [
             { text: 'JavaScript', link: '/frontend/javascript/' },
             { text: 'TypeScript', link: '/frontend/typescript/' },
             { text: 'Utils', link: '/frontend/Utils/thousandsSeparator' },
-            { text: 'Camp', link: '/frontend/Camp/html' },
+            { text: 'Camp', link: '/frontend/camp/html' },
         ],
     },
     {

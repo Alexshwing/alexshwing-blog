@@ -68,7 +68,8 @@ export const sidebar: DefaultTheme.Config['sidebar'] = {
             text: 'Webpack',
             collapsed: false,
             items: [
-                { text: '基础配置', link: '/engineering/webpack/basic' }
+                { text: '基础配置', link: '/engineering/webpack/basic' },
+                { text: '高级优化', link: '/engineering/webpack/senior' }
             ]
         },
         {
