@@ -24,6 +24,7 @@ export const sidebar: DefaultTheme.Config['sidebar'] = {
             collapsed: false,
             items: [
                 { text: '千分位格式化', link: '/frontend/Utils/thousandsSeparator' },
+                { text: '树', link: '/frontend/Utils/tree' },
             ]
         },
         {
@@ -91,6 +92,9 @@ export const sidebar: DefaultTheme.Config['sidebar'] = {
         {
             text: '工具',
             collapsed: false,
+            items: [
+                { text: 'd3.js', link: '/project/tool/d3' }
+            ]
         },
         {
             text: '个人项目',
