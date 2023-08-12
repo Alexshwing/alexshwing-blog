@@ -23,6 +23,7 @@ export const sidebar: DefaultTheme.Config['sidebar'] = {
             text: 'Utils',
             collapsed: false,
             items: [
+                { text: '判断数据类型', link: '/frontend/Utils/type' },
                 { text: '千分位格式化', link: '/frontend/Utils/thousandsSeparator' },
                 { text: '树', link: '/frontend/Utils/tree' },
             ]
