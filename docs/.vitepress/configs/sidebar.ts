@@ -24,6 +24,7 @@ export const sidebar: DefaultTheme.Config['sidebar'] = {
             collapsed: false,
             items: [
                 { text: '判断数据类型', link: '/frontend/Utils/type' },
+                { text: '柯里化', link: '/frontend/Utils/curry' },
                 { text: '千分位格式化', link: '/frontend/Utils/thousandsSeparator' },
                 { text: '树', link: '/frontend/Utils/tree' },
             ]
@@ -62,6 +63,7 @@ export const sidebar: DefaultTheme.Config['sidebar'] = {
                 { text: '表单转为表格', link: '/vue/element/formTransformtoTable' },
                 { text: '周范围选择器', link: '/vue/element/weekRangePicker' },
                 { text: '样式', link: '/vue/element/style' },
+                { text: '踩坑', link: '/vue/element/trap' },
             ]
         },
     ],
@@ -78,7 +80,8 @@ export const sidebar: DefaultTheme.Config['sidebar'] = {
             text: 'Git',
             collapsed: false,
             items: [
-                { text: 'commit 规范', link: '/engineering/git/commit' }
+                { text: 'commit 规范', link: '/engineering/git/commit' },
+                { text: '代码行数统计', link: '/engineering/git/count' }
             ]
         },
     ],

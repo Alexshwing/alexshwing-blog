@@ -125,7 +125,7 @@ export default {
 
 ## 2. print-js
 采用`html2Canvas`结合`print-js`解决`打印错位`问题, 但是滚动条内隐藏部分无法显示
-### print.js
+- print.js
 ```javascript
 //html转图片打印（解决element table打印不全的问题）
 import html2canvas from "html2canvas";
@@ -202,7 +202,7 @@ export const html2CanvasPrint = (dom, callback) => {
 };
 
 ```
-### About.vue
+- About.vue
 ```vue
 <template>
   <div ref="printDom">
@@ -281,270 +281,230 @@ export default {
 ```
 
 ## 3.原生`html`重写打印页面
-### print.js
 ```js
 /**
- * (解决滚动条隐藏内容未显示问题)
- * @see https://blog.csdn.net/qq953454299/article/details/127571965
- * @param {Object} configOptions 配置选项 (包括`firstPageTableRow`第一页表格行数, `otherPageTableRow`其他页表格行数, `title`标题)
- * @param {Object} tableObj 表格对象 (包括`tableData`表格数据, `tableCol`表格要展示的列信息)
- * @param {Object} descriptionsObj 描述列表对象
- * @param {Object} formObj 表单对象
- * @return {Object} 打印页面
+ * 使用`原生html`打印页面(表格、表单、描述列表)
+ * ! 解决 滚动条隐藏内容未显示、换页表格项被截断、列边框错位问题
+ * @param {String} title 标题
+ * @param {Object} tableOptions 表格配置项(包括 tableData 表格数据、tableCol 表格展示项)
+ * @param {Object} descriptionsOptions 描述列表配置项(包括 descriptionsData 描述列表数据、descriptionsCol 描述列表展示项)
+ * @param {Object} formOptions 表单配置项(包括 formData 表单数据、 formCol 表单展示项)
+ * @return {*} 打印页面
  */
-export function print(configOptions = {}, tableObj = {}, descriptionsObj = {}, formObj = {}) {
-    const iframe = document.createElement("IFRAME")
-    let doc = null
-    iframe.setAttribute("id", 'print-iframe')
-    iframe.setAttribute("style", 'position:absolute;width:0px;height:0px;left:-500px;top:-500px')
-    document.body.append(iframe)
-    doc = iframe.contentWindow.document
+function print(title, tableOptions = {}, descriptionsOptions = {}, formOptions = {}) {
+  const iframe = document.createElement("IFRAME")
+  iframe.setAttribute("id", "myIframe")
+  iframe.setAttribute("style", 'position:absolute;width:0px;height:0px;left:-500px;top:-500px')
+  document.body.append(iframe)
+  const doc = iframe.contentWindow.document
 
-    const title = configOptions.title || ''
-    doc.write(`<style media="print">
+  const _title = title || ''
+  doc.write(`
+    <style media="print">
       @page {
         size:landscape;
         margin-top: 30px;
         margin-left: 20px;
         margin-right: 20px;
         margin-bottom: 20px;        
-    }
-    .title-text {
-      width: 100%;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-    }
-    </style>`)
-    doc.write(`<div class="title-text">${title}</div>`)
+      }
+      .title-text {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+    </style>
+  `)
+  doc.write(`<div class="title-text">${_title}</div>`)
 
-    // Print Descriptions if corresponding obj exist
-    if (!isEmptyObj(descriptionsObj)) {
-        printDescriptions(descriptionsObj, doc)
-    }
+  !isEmptyObject(descriptionsOptions) && PrintDescriptions(descriptionsOptions, doc)
 
-    // Print Table if corresponding obj exist
-    if (!isEmptyObj(tableObj)) {
-        printTable(tableObj, configOptions, doc)
-    }
+  !isEmptyObject(tableOptions) && PrintTable(tableOptions, doc)
 
-    // Print Form if corresponding obj exist
-    if (!isEmptyObj(formObj)) {
-        printForm(formObj, doc)
-    }
+  !isEmptyObject(formOptions) && PrintForm(formOptions, doc)
 
-    doc.close()
-
-    iframe.contentWindow.focus()
-    iframe.contentWindow.print()
-    if (navigator.userAgent.indexOf("MSIE") > 0) {
-        document.body.removeChild(iframe)
-    }
+  doc.close()
+  iframe.contentWindow.focus()
+  iframe.contentWindow.print()
+  if (navigator.userAgent.indexOf("MSIE") > 0) {
+    document.body.removeChild(iframe)
+  }
 }
 
-function printTable(tableObj, configOptions, doc) {
-    // 绘制`tableData[begin:end]`表格行
-    function concatTr(begin, end, tableData, tableCol) {
-        let res = ''
-        let dataSource = tableData
-        for (let i = begin; i < end; i++) {
-            res += `<tr>${tableCol.reduce((prev, cur) => prev + `<td>${dataSource[i][cur.prop] || ''}`, '')}</tr>`
+
+function PrintTable(options, doc) {
+  if (!(this instanceof PrintTable)) return new PrintTable(options, doc);
+  const tableStyle = this.getTableStyle()
+  const tableHtml = this.getTableHtml(options)
+  doc.write(tableStyle)
+  doc.write(tableHtml)  
+}
+PrintTable.prototype = {
+  getTableStyle: function () {
+    return `
+      <style media="print"> 
+        table {
+            border: 1px solid #DFE5EE;
+            margin-top: 200px;
+            border-spacing: 0;/*去掉单元格间隙*/
+            table-layout: fixed; /* 固定表格布局 */
+            width: 100%; /* 设置表格宽度 */
         }
-        return res
-    }
-
-    const { tableData = [], tableCol = [] } = tableObj
-
-    // Table Style
-    doc.write(`<style media="print"> 
-         table {
-             border: 1px solid #DFE5EE;
-             margin-top: 200px;
-             border-spacing: 0;/*去掉单元格间隙*/
-             table-layout: fixed; /* 固定表格布局 */
-             width: 100%; /* 设置表格宽度 */
-         }
-         table:first-of-type {
-             margin-top: 0px ;
-         }
-         table thead th{
-             border: 1px solid #DFE5EE;
-             text-align:center;
-             font-size:12px;
-             font-weight: normal;
-             color: #606266;
-             border-collapse:collapse;
-             width: auto; /* 取消宽度设置 */
-         }
-         table tbody td{
-             border: 1px solid #DFE5EE;
-             text-align:center;
-             font-size:12px;
-             font-weight: normal;
-             color: #606266;
-             height: 47px;
-             word-wrap: break-word; /* 当单词超出容器宽度时自动换行 */
-             white-space: normal; /* 允许内容自动换行 */
-         }
-   </style>`)
-
-    // Table Head
-    let tableHead = `<table>
-                    <thead>
-                      <tr>
-                        ${tableCol.reduce((prev, cur) => prev + `<th>${cur.label}</th>`, '')}
-                      </tr>
-                    </thead>
-                   </tbody>`
-    // Table Body
-    const n = tableData.length
-    const firstPageRow = configOptions.firstPageTableRow || 5,
-        otherPageRow = configOptions.otherPageTableRow || 5
-    let beginIndex = 0, endIndex = Math.min(firstPageRow, n)
-    // Table First Page
-    let tableBody = concatTr(beginIndex, endIndex, tableData, tableCol)
-    beginIndex = endIndex
-    let table = tableHead + tableBody + `</tbody></table>`
-    doc.write(table)
-    // if first page cannot put all data
-    if (n >= beginIndex) {
-        const page = Math.floor((n - beginIndex) / otherPageRow)
-        const rem = (n - beginIndex) % otherPageRow
-        // full data in page
-        for (let i = 0; i < page; i++) {
-            tableBody = concatTr(beginIndex, beginIndex + otherPageRow > n ? n : beginIndex + otherPageRow, tableData, tableCol)
-            table = tableHead + tableBody + `</tbody></table>`
-            beginIndex += otherPageRow
-            doc.write(table)
+        table:first-of-type {
+            margin-top: 0px ;
         }
-        // part data in page
-        if (rem !== 0) {
-            tableBody = concatTr(beginIndex, n, tableData, tableCol)
-            table = tableHead + tableBody + `</tbody></table>`
-            doc.write(table)
+        table thead th{
+            border: 1px solid #DFE5EE;
+            text-align:center;
+            font-size:12px;
+            font-weight: normal;
+            color: #606266;
+            border-collapse:collapse;
+            width: auto; /* 取消宽度设置 */
         }
-    }
-
+        table tbody td{
+            border: 1px solid #DFE5EE;
+            text-align:center;
+            font-size:12px;
+            font-weight: normal;
+            color: #606266;
+            height: 47px;
+            word-wrap: break-word; /* 当单词超出容器宽度时自动换行 */
+            white-space: normal; /* 允许内容自动换行 */
+        }
+        tr {
+          page-break-inside: avoid;
+        }
+      </style>`
+  },
+  getTableHtml: function (options) {
+    const {tableData, tableCol} = options
+    const head = `
+        <thead>
+          <tr>
+            ${tableCol.reduce((prev, cur) => prev + `<th>${cur.label}</th>`, '')}
+          </tr>
+        </thead>
+    `
+    const body =  `
+        <tbody>
+          ${tableData.reduce((prev, cur) => prev + `<tr>${tableCol.reduce((p, c) => p + `<td>${cur[c.prop] || ''}`, '')}</tr>`, '')}
+        </tbody>
+    `
+    return `
+      <table>
+        ${head}
+        ${body}
+      </table>
+    `
+  }
 }
 
-function printForm(formObj, doc, isForm = true) {
-    const { formData = {}, formProp = [] } = formObj
-    // Form Style
-    doc.write(`<style media="print">
-      table {
-        border: 1px solid #DFE5EE;
-        border-spacing: 0;/*去掉单元格间隙*/
-        table-layout: fixed; /* 固定表格布局 */
-        width: 100%; /* 设置表格宽度 */
-        display: table;
-        text-indent: initial;
-        border-spacing: 2px;
-        border-color: gray;
-        border-collapse: collapse;
-      }
-      .table-col {
-        padding: 10px;
-        border: 1px solid #e6ebf5;
-        box-sizing: border-box;
-        text-align:center;
-        font-weight: normal;
-        line-height: 1.5;
-        color: #909399;
-        font-size: 15px !important;
-      }
-      </style>`);
-    const n = formProp.length
+function PrintForm(options, doc, isForm = true) {
+  if (!(this instanceof PrintForm)) return new PrintForm(options, doc, isForm);
+  const FormStyle = this.getFormStyle()
+  const FormHtml = this.getFormHtml(options, isForm)
+  doc.write(FormStyle)
+  doc.write(FormHtml)
+}
+PrintForm.prototype = {
+  getFormStyle: function() {
+    return `
+      <style media="print">
+        table {
+          border: 1px solid #DFE5EE;
+          border-spacing: 0;/*去掉单元格间隙*/
+          table-layout: fixed; /* 固定表格布局 */
+          width: 100%; /* 设置表格宽度 */
+          display: table;
+          text-indent: initial;
+          border-spacing: 2px;
+          border-color: gray;
+          border-collapse: collapse;
+        }
+        .table-col {
+          padding: 10px;
+          border: 1px solid #e6ebf5;
+          box-sizing: border-box;
+          text-align:center;
+          font-weight: normal;
+          line-height: 1.5;
+          color: #909399;
+          font-size: 15px !important;
+        }
+      </style>`
+  },
+  getFormHtml: function(options, isForm) {
+    const {formData, formCol} = options
+    const n = formCol.length
     const colspan = isForm ? 2 : 1
     const colNum = isForm ? 2 : 3
     const row = Math.floor(n / colNum)
     const rem = n % colNum
     let table = `<div><table><tbody>`
-
-    for (let i = 0; i < row; i++) {
-        let tr = `<tr>`
-        for (let j = 0; j < colNum; j++) {
-            tr += `<th colspan="1" class="table-col">${formProp[i * colNum + j].label || ''}</th>
-          <td colspan="${colspan}" class="table-col">${formData[formProp[i * colNum + j].value] || ''}</td>`
-        }
-        tr += `</tr>`
-        table += tr
+  
+    for (let i = 0; i < row; i ++ ) {
+      let tr = `<tr>`
+      for (let j = 0; j < colNum; j ++ ) {
+        tr += `<th colspan="1" class="table-col">${formCol[i*colNum+j].label || ''}</th>
+        <td colspan="${colspan}" class="table-col">${formData[formCol[i*colNum+j].value] || ''}</td>`
+      }
+      tr += `</tr>`
+      table += tr
     }
-
+  
+    // 最后一行没占满
     if (rem !== 0) {
-        let tr = `<tr>`
-        for (let j = 0; j < rem; j++) {
-            tr += `<th colspan="1" class="table-col">${formProp[row * colNum + j].label || ''}</th>
-            <td colspan="${colspan}" class="table-col">${formData[formProp[row * colNum + j].value] || ''}</td>`
+      let tr = `<tr>`
+      for (let j = 0; j < rem; j ++ ) {
+          tr += `<th colspan="1" class="table-col">${formCol[row*colNum+j].label || ''}</th>
+          <td colspan="${colspan}" class="table-col">${formData[formCol[row*colNum+j].value] || ''}</td>`
         }
-        for (let j = 0; j < colNum - rem; j++) {
-            tr += `<th colspan="1" class="table-col"></th>
-                <td colspan="${colspan}" class="table-col"></td>`
-        }
-        tr += `</tr>`
-        table += tr
+      for (let j = 0; j < colNum - rem; j ++ ) {
+        tr += `<th colspan="1" class="table-col"></th>
+              <td colspan="${colspan}" class="table-col"></td>`
+      }
+      tr += `</tr>`
+      table += tr
     }
-
+  
     table += `</tbody></table></div>`
-    doc.write(table)
+    return table
+  }
 }
 
-function printDescriptions(descriptionsObj, doc) {
-    const { descriptionsData = {}, descriptionsProp = [] } = descriptionsObj
-    printForm({
-        formData: descriptionsData,
-        formProp: descriptionsProp
-    }, doc, false)
+function PrintDescriptions(options, doc) {
+  const {descriptionsData, descriptionsCol} = options
+  PrintForm({
+    formData: descriptionsData,
+    formCol: descriptionsCol
+  }, doc, false)
 }
 
-function isEmptyObj(obj) {
-    return Object.keys(obj).length === 0
+function isEmptyObject(obj) {
+  for (const _ in obj) {
+    return false
+  }
+  return true
 }
+
+const Print = {
+  install(Vue) {
+    Vue.prototype.$print = print
+  }
+}
+export default Print
 ```
-```vue
-<template>
-  <div ref="printDom">
-    <el-button type="primary" @click="handlePrint">打印</el-button>
-    <el-table :data="tableData" border>
-      <el-table-column
-        prop="address"
-        label="地址"
-        align="center"
-        v-for="item in 20"
-        :key="item"
-      >
-      </el-table-column>
-    </el-table>
-  </div>
-</template>
-<script>
-import { print } from '../utils/print'
-export default {
-  data() {
-    return {
-      tableData: [
-        {
-          address: '上海市普陀区金沙江路 1518 弄',
-        },
-      ],
-    }
-  },
-  methods: {
-    handlePrint() {
-      print(
-        {
-          firstPageTableRow: 15,
-          otherPageTableRow: 16,
-          title: '验收单',
-        },
-        {
-          tableData: this.tableData,
-          tableCol: new Array(20)
-            .fill(0)
-            .map(() => ({ label: '地址', prop: 'address' })),
-        }
-      )
-    },
-  },
-}
-</script>
+- main.js 注册插件
+```js
+import Print from './plugins/print' 
+Vue.use(Print)
+```
+- 组件中使用
+```js
+this.$print('alexshwing', {
+  tableData: this.tableData,
+  tableCol: this.tableCol,
+})
 ```
