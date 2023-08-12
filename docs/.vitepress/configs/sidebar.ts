@@ -120,6 +120,7 @@ export const sidebar: DefaultTheme.Config['sidebar'] = {
             items: [
                 { text: '并查集', link: '/algorithms/unionFind' },
                 { text: '树状数组', link: '/algorithms/fenwick' },
+                { text: '拓扑排序', link: '/algorithms/topsort' },
                 { text: '换根DP', link: '/algorithms/rerooting' },
             ]
         }
