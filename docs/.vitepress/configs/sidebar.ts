@@ -122,6 +122,7 @@ export const sidebar: DefaultTheme.Config['sidebar'] = {
         {
             text: '算法',
             items: [
+                { text: '数学', link: '/algorithms/math' },
                 { text: '并查集', link: '/algorithms/unionFind' },
                 { text: '树状数组', link: '/algorithms/fenwick' },
                 { text: '拓扑排序', link: '/algorithms/topsort' },
