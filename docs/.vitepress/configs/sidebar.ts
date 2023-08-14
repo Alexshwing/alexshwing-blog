@@ -117,6 +117,13 @@ export const sidebar: DefaultTheme.Config['sidebar'] = {
                 { text: '文件上传', link: '/backend/nodejs/fileUpload' },
             ]
         },
+        {
+            text: 'Python',
+            collapsed: false,
+            items: [
+                { text: 'SortedList', link: '/backend/python/sortedList' },
+            ]
+        },
     ],
     '/algorithms/': [
         {
