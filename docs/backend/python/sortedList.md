@@ -71,7 +71,7 @@ ValueError: 0 not in list
 ## pop
 移除并返回 index 位置的值
 
-如果 SoretedList 为空 或者 index 超过返回, 抛出 `IndexError`错误
+如果 SoretedList 为空 或者 index 超过范围, 抛出 `IndexError`错误
 
 复杂度 `O(log n)`
 ```python

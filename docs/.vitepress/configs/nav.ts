@@ -16,7 +16,6 @@ export const nav: DefaultTheme.Config['nav'] = [
         items: [
             { text: 'Vue2', link: '/vue/vue2/' },
             { text: 'Vue3', link: '/vue/vue3/' },
-            { text: 'Element', link: '/vue/element/' },
         ]
     },
     {

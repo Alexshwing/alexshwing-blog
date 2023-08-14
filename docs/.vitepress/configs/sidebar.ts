@@ -55,17 +55,6 @@ export const sidebar: DefaultTheme.Config['sidebar'] = {
             text: 'Vue3',
             collapsed: false
         },
-        {
-            text: 'Element',
-            collapsed: false,
-            items: [
-                { text: '展开行表格', link: '/vue/element/expandTable' },
-                { text: '表单转为表格', link: '/vue/element/formTransformtoTable' },
-                { text: '周范围选择器', link: '/vue/element/weekRangePicker' },
-                { text: '样式', link: '/vue/element/style' },
-                { text: '踩坑', link: '/vue/element/trap' },
-            ]
-        },
     ],
     '/engineering/': [
         {
@@ -97,7 +86,30 @@ export const sidebar: DefaultTheme.Config['sidebar'] = {
             text: '工具',
             collapsed: false,
             items: [
-                { text: 'd3.js', link: '/project/tool/d3' }
+                {
+                    text: 'D3',
+                    link: '/project/tool/d3/',
+                    collapsed: true,
+                    items: [
+                        { text: '开始', link: '/project/tool/d3/getting-started' },
+                        { text: '选择集', link: '/project/tool/d3/selection' },
+                        { text: '比例尺', link: '/project/tool/d3/scale' },
+                        { text: '坐标轴', link: '/project/tool/d3/axis' },
+                        { text: '读取文件', link: '/project/tool/d3/fetch' }
+                    ]
+                },
+                {
+                    text: 'Element',
+                    link: '/project/tool/element/',
+                    collapsed: true,
+                    items: [
+                        { text: '展开行表格', link: '/project/tool/element/expandTable' },
+                        { text: '表单转为表格', link: '/project/tool/element/formTransformtoTable' },
+                        { text: '周范围选择器', link: '/project/tool/element/weekRangePicker' },
+                        { text: '样式', link: '/project/tool/element/style' },
+                        { text: '踩坑', link: '/project/tool/element/trap' },
+                    ]
+                }
             ]
         },
         {
