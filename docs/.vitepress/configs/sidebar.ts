@@ -57,6 +57,18 @@ export const sidebar: DefaultTheme.Config['sidebar'] = {
             text: 'Vue3',
             collapsed: false
         },
+        {
+            text: 'Vuex',
+            collapsed: false,
+            items: [
+                { text: 'Start', link: '/vue/vuex/getting-started' },
+                { text: 'State', link: '/vue/vuex/state' },
+                { text: 'Getters', link: '/vue/vuex/getters' },
+                { text: 'Mutaions', link: '/vue/vuex/mutaions' },
+                { text: 'Actions', link: '/vue/vuex/actions' },
+                { text: 'Modules', link: '/vue/vuex/modules' },
+            ]
+        },
     ],
     '/engineering/': [
         {
