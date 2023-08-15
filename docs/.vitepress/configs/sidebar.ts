@@ -46,6 +46,7 @@ export const sidebar: DefaultTheme.Config['sidebar'] = {
             collapsed: false,
             items: [
                 { text: '组件渲染顺序', link: '/vue/vue2/componentsRenderOrder' },
+                { text: 'nextTick', link: '/vue/vue2/nextTick' },
                 { text: '@hook', link: '/vue/vue2/hooks' },
                 { text: 'JSX', link: '/vue/vue2/JSX' },
                 { text: '替换路由', link: '/vue/vue2/replaceRoutes' },
