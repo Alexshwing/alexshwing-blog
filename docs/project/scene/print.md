@@ -1,6 +1,6 @@
 # 打印
 
-## 1. vue-print-nb
+## 一. vue-print-nb
 打印表格时可能会出现`数据列边框错位`( 详见 [思否提问](https://segmentfault.com/q/1010000043788627))
 ```shell
 npm install vue-print-nb --save
@@ -123,7 +123,7 @@ export default {
 </style>
 ```
 
-## 2. print-js
+## 二. print-js
 采用`html2Canvas`结合`print-js`解决`打印错位`问题, 但是滚动条内隐藏部分无法显示
 - print.js
 ```javascript
@@ -280,7 +280,7 @@ export default {
 
 ```
 
-## 3.原生`html`重写打印页面
+## 三.原生`html`重写打印页面
 ```js
 /**
  * 使用`原生html`打印页面(表格、表单、描述列表)

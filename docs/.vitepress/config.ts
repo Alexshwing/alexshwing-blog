@@ -19,7 +19,7 @@ export default defineConfig({
         sidebar,
         /* 右侧大纲配置 */
         outline: {
-            level: 'deep',
+            // level: 'deep',
             label: '本页目录'
         },
 

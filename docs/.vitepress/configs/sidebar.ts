@@ -6,7 +6,8 @@ export const sidebar: DefaultTheme.Config['sidebar'] = {
             text: 'CSS',
             collapsed: false,
             items: [
-                { text: 'footer固定在底部', link: '/frontend/css/fixedAttheBottom' }
+                { text: 'footer固定在底部', link: '/frontend/css/fixedAttheBottom' },
+                { text: '文本溢出', link: '/frontend/css/textOverflow' }
             ]
         },
         {
@@ -79,7 +80,8 @@ export const sidebar: DefaultTheme.Config['sidebar'] = {
             text: '场景',
             collapsed: false,
             items: [
-                { text: 'print', link: '/project/scene/print' }
+                { text: '打印', link: '/project/scene/print' },
+                { text: 'el-table 无限滚动', link: '/project/scene/inifinite-scroll' }
             ]
         },
         {
