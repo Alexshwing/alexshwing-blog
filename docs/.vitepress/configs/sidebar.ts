@@ -47,6 +47,10 @@ export const sidebar: DefaultTheme.Config['sidebar'] = {
             text: 'Vue2',
             collapsed: false,
             items: [
+                { text: 'data', link: '/vue/vue2/data' },
+                { text: 'v-if 和 v-show', link: '/vue/vue2/ifandshow' },
+                { text: 'v-if 和 v-for', link: '/vue/vue2/ifandfor' },
+                { text: 'Vue.$set', link: '/vue/vue2/set' },
                 { text: '组件渲染顺序', link: '/vue/vue2/componentsRenderOrder' },
                 { text: 'nextTick', link: '/vue/vue2/nextTick' },
                 { text: '@hook', link: '/vue/vue2/hooks' },

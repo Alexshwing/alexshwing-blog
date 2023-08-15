@@ -185,13 +185,7 @@ function myUnique(arr) {
 ```
 
 ## 二. 对象
-### 判断类型
-```js
-const arr = [1, Number(1), "1", true, null, undefined, BigInt(1), Symbol(1), {}, [], new Date(), new RegExp()];
-function type(target) {
-  return Object.prototype.toString.call(target).slice(8, -1);
-}
-```
+
 
 ## 三. 优化
 ### 防抖
