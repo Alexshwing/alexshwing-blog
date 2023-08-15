@@ -6,8 +6,10 @@ export const sidebar: DefaultTheme.Config['sidebar'] = {
             text: 'CSS',
             collapsed: false,
             items: [
+                { text: '文本溢出', link: '/frontend/css/textOverflow' },
+                { text: '水平垂直居中', link: '/frontend/css/center' },
+                { text: '隐藏元素', link: '/frontend/css/hiddenEl' },
                 { text: 'footer固定在底部', link: '/frontend/css/fixedAttheBottom' },
-                { text: '文本溢出', link: '/frontend/css/textOverflow' }
             ]
         },
         {
