@@ -10,6 +10,7 @@ export const sidebar: DefaultTheme.Config['sidebar'] = {
                 { text: '水平垂直居中', link: '/frontend/css/center' },
                 { text: '隐藏元素', link: '/frontend/css/hiddenEl' },
                 { text: 'footer固定在底部', link: '/frontend/css/fixedAttheBottom' },
+                { text: '电梯导航', link: '/frontend/css/elevatorNavigation' },
             ]
         },
         {
