@@ -117,7 +117,11 @@ export const sidebar: DefaultTheme.Config['sidebar'] = {
                         { text: '选择集', link: '/project/tool/d3/selection' },
                         { text: '比例尺', link: '/project/tool/d3/scale' },
                         { text: '坐标轴', link: '/project/tool/d3/axis' },
-                        { text: '读取文件', link: '/project/tool/d3/fetch' }
+                        { text: '读取文件', link: '/project/tool/d3/fetch' },
+                        { text: '柱形图', link: '/project/tool/d3/barChart' },
+                        { text: '散点图', link: '/project/tool/d3/scatterChart' },
+                        { text: '折线图', link: '/project/tool/d3/lineChart' },
+                        { text: '地图', link: '/project/tool/d3/map' }
                     ]
                 },
                 {

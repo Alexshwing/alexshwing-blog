@@ -29,11 +29,11 @@ const xScale = d3.scaleLinear()
   .domain([0, 100])
   .range([0, innerWidth])
 
-// 引入坐标轴
 const yScale = d3.scaleLinear()
   .domain([0, 100])
   .range([0, innerHeight])
-
+  
+// 引入坐标轴
 const xAxis = d3.axisBottom(xScale)
 const yAxis = d3.axisLeft(yScale);
 
