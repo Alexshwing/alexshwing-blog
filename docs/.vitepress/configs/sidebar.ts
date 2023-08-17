@@ -11,6 +11,7 @@ export const sidebar: DefaultTheme.Config['sidebar'] = {
                 { text: '隐藏元素', link: '/frontend/css/hiddenEl' },
                 { text: 'footer固定在底部', link: '/frontend/css/fixedAttheBottom' },
                 { text: '电梯导航', link: '/frontend/css/elevatorNavigation' },
+                { text: '根据背景色切换黑白文字', link: '/frontend/css/switchTextColorByBGColor' },
             ]
         },
         {
