@@ -20,6 +20,7 @@ export const sidebar: DefaultTheme.Config['sidebar'] = {
                 { text: '执行上下文与作用域', link: '/frontend/javascript/executionContext' },
                 { text: '工具函数', link: '/frontend/javascript/utils' },
                 { text: '手写', link: '/frontend/javascript/handWriting' },
+                { text: 'MutationObserver', link: '/frontend/javascript/mutationObserver' },
             ]
         },
 
