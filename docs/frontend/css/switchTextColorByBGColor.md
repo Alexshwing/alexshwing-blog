@@ -1,7 +1,7 @@
 # 根据背景色切换黑白文字
 
 ## CSS 滤镜
-![](./assets/black-white-text-color.jpg)
+![](./assets/switchTextColorByBGColor.jpg)
 
 - grayscale
 彩色文字变黑白: 深色变为深灰, 浅色变为浅灰

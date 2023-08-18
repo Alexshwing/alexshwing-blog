@@ -22,6 +22,7 @@ export const sidebar: DefaultTheme.Config['sidebar'] = {
                 { text: '工具函数', link: '/frontend/javascript/utils' },
                 { text: '手写', link: '/frontend/javascript/handWriting' },
                 { text: 'MutationObserver', link: '/frontend/javascript/mutationObserver' },
+                { text: '颜色转换', link: '/frontend/javascript/colorConversions' },
             ]
         },
 
@@ -103,6 +104,7 @@ export const sidebar: DefaultTheme.Config['sidebar'] = {
             collapsed: false,
             items: [
                 { text: '打印', link: '/project/scene/print' },
+                { text: '水印', link: '/project/scene/watermark' },
                 { text: 'el-table 无限滚动', link: '/project/scene/inifinite-scroll' }
             ]
         },
