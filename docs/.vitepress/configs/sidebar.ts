@@ -48,6 +48,7 @@ export const sidebar: DefaultTheme.Config['sidebar'] = {
                 { text: 'HTTP 实用指南', link: '/frontend/camp/http' },
                 { text: '前端设计模式应用', link: '/frontend/camp/designPatterns' },
                 { text: '响应式系统 与 React', link: '/frontend/camp/react' },
+                { text: 'Node.js 与前端开发实战', link: '/frontend/camp/nodejs' },
                 { text: 'Vite 知识体系', link: '/frontend/camp/vite' },
                 { text: '前端必须知道的开发调试知识', link: '/frontend/camp/debug' },
                 { text: '项目', link: '/frontend/camp/project' },
