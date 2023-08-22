@@ -38,7 +38,7 @@ export const sidebar: DefaultTheme.Config['sidebar'] = {
         },
         {
             text: 'Camp',
-            collapsed: false,
+            collapsed: true,
             items: [
                 { text: '前端与 HTML', link: '/frontend/camp/html' },
                 { text: '深入理解 CSS', link: '/frontend/camp/css' },
@@ -46,10 +46,12 @@ export const sidebar: DefaultTheme.Config['sidebar'] = {
                 { text: '深入浅出 TypeScript', link: '/frontend/camp/typescript' },
                 { text: 'Web 标准与前端开发', link: '/frontend/camp/standard' },
                 { text: 'HTTP 实用指南', link: '/frontend/camp/http' },
+                { text: 'Web 开发的安全之旅', link: '/frontend/camp/secure' },
                 { text: '前端设计模式应用', link: '/frontend/camp/designPatterns' },
                 { text: '响应式系统 与 React', link: '/frontend/camp/react' },
                 { text: 'Node.js 与前端开发实战', link: '/frontend/camp/nodejs' },
                 { text: 'Vite 知识体系', link: '/frontend/camp/vite' },
+                { text: '构建 Webpack 知识体系', link: '/frontend/camp/webpack' },
                 { text: '前端必须知道的开发调试知识', link: '/frontend/camp/debug' },
                 { text: '项目', link: '/frontend/camp/project' },
             ]

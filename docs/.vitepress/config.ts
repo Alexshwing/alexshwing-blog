@@ -1,5 +1,5 @@
 import { defineConfig } from 'vitepress'
-import { nav, sidebar } from './configs'
+import { nav, sidebar, algolia } from './configs'
 
 
 export default defineConfig({
@@ -34,6 +34,7 @@ export default defineConfig({
         docFooter: {
             prev: '上一篇',
             next: '下一篇'
-        }
+        },
+        algolia
     }
 })
