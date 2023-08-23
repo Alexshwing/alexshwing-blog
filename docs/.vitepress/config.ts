@@ -1,7 +1,6 @@
 import { defineConfig } from 'vitepress'
 import { nav, sidebar, algolia } from './configs'
 
-
 export default defineConfig({
     base: "/alexshwing-blog/",
 
@@ -10,6 +9,12 @@ export default defineConfig({
     description: `Alexshwing's blog`,
 
     lastUpdated: true,
+
+    markdown: {
+        config: (md) => {
+            md.use(require("markdown-it-task-lists"))
+        }
+    },
 
     themeConfig: {
         i18nRouting: false,

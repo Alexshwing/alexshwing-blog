@@ -19,10 +19,8 @@ export const sidebar: DefaultTheme.Config['sidebar'] = {
             collapsed: false,
             items: [
                 { text: '执行上下文与作用域', link: '/frontend/javascript/executionContext' },
-                { text: '工具函数', link: '/frontend/javascript/utils' },
-                { text: '手写', link: '/frontend/javascript/handWriting' },
                 { text: 'MutationObserver', link: '/frontend/javascript/mutationObserver' },
-                { text: '颜色转换', link: '/frontend/javascript/colorConversions' },
+                { text: '手写', link: '/frontend/javascript/handWriting' },
             ]
         },
 
@@ -31,6 +29,12 @@ export const sidebar: DefaultTheme.Config['sidebar'] = {
             collapsed: false,
             items: [
                 { text: '判断数据类型', link: '/frontend/Utils/type' },
+                { text: '解析 URL', link: '/frontend/Utils/parseUrlParams' },
+                { text: '随机数', link: '/frontend/Utils/getRandomNumberFromRange' },
+                { text: '判断设备类型', link: '/frontend/Utils/judgeEquipment' },
+                { text: '防抖节流', link: '/frontend/Utils/debouneAndThrottle' },
+                { text: '文件转换', link: '/frontend/Utils/fileConversion' },
+                { text: '颜色转换', link: '/frontend/Utils/colorConversions' },
                 { text: '柯里化', link: '/frontend/Utils/curry' },
                 { text: '千分位格式化', link: '/frontend/Utils/thousandsSeparator' },
                 { text: '树', link: '/frontend/Utils/tree' },
@@ -90,8 +94,28 @@ export const sidebar: DefaultTheme.Config['sidebar'] = {
                 { text: 'Modules', link: '/vue/vuex/modules' },
             ]
         },
+        {
+            text: 'Vue-Router',
+            collapsed: false,
+        },
+        {
+            text: 'Pinia',
+            collapsed: false,
+        },
+        {
+            text: 'Nuxt',
+            collapsed: false,
+        },
     ],
     '/engineering/': [
+        {
+            text: 'Git',
+            collapsed: false,
+            items: [
+                { text: 'commit 规范', link: '/engineering/git/commit' },
+                { text: '代码行数统计', link: '/engineering/git/count' }
+            ]
+        },
         {
             text: 'Webpack',
             collapsed: false,
@@ -101,12 +125,16 @@ export const sidebar: DefaultTheme.Config['sidebar'] = {
             ]
         },
         {
-            text: 'Git',
+            text: 'Vite',
             collapsed: false,
-            items: [
-                { text: 'commit 规范', link: '/engineering/git/commit' },
-                { text: '代码行数统计', link: '/engineering/git/count' }
-            ]
+        },
+        {
+            text: 'Eslint',
+            collapsed: false,
+        },
+        {
+            text: 'Babel',
+            collapsed: false,
         },
     ],
     '/project/': [

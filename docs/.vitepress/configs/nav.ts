@@ -22,8 +22,8 @@ export const nav: DefaultTheme.Config['nav'] = [
     {
         text: '工程化',
         items: [
-            { text: 'Webpack', link: '/engineering/webpack/' },
             { text: 'Git', link: '/engineering/git/' },
+            { text: 'Webpack', link: '/engineering/webpack/' },
         ]
     },
     {

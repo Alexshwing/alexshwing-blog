@@ -1,0 +1,475 @@
+# TODO
+
+  ## HTML 与 CSS
+- [ ] HTML
+  - meta
+  - ! 生成代码 原理
+  - src 和 href
+  - link 和 @import
+  - defer 和 async
+- [ ] 选择器
+  - 伪类
+  - 伪元素
+  - 优先级
+    - 权重
+- [ ] 盒模型
+  - 块级
+- [ ] 定位
+  - 值
+  - sticky
+  - absolute
+- [ ] Grid
+- [ ] Flex
+  - 用法
+  - align-self 作用 一个一个设置吗
+- [ ] 浮动
+- [ ] BFC
+- [ ] 脱离文档流
+- [ ] 动画
+  - transform 原理
+  - gpu
+- [ ] canvas / svg
+- [ ] 优化
+  - 首屏css
+  - 图片懒加载
+    - 占位符显示缩略图
+  - 字体图标
+  - 骨架屏
+- [ ] CSS3
+  - 优化
+- [ ] 布局
+  - 两栏
+  - 三栏
+  - 圣杯
+  - 双飞翼
+  - 瀑布流
+    -  监听click
+- [ ] 预处理器
+  - scss
+    - 变量
+  - less
+  - stylus
+  - tailwind
+  - unocss
+- [ ] 组件
+  - 灵动岛
+  - 聊天
+  - 树形连线
+  - 弹出框
+  - 表单校验
+  - 日历
+  - 长列表懒加载
+- [ ] 样式
+  - 1px 线
+  - 小于 12px 字体
+  - 三角
+  - 梯形
+  - 文字溢出
+  - 隐藏元素
+  - 垂直局中
+  - 视差滚动
+  - 毛玻璃
+  - mask 渐变
+  - z-index
+  - 全屏展示
+- [ ] 移动端适配
+  - rem em vh vw 百分比 媒体查询 栅格 flex
+  - flexible.js
+
+
+## JS
+- [ ] 精度
+  - 0.1 + 0.2
+- [ ] 数据类型
+  - 基本 和 对象
+    - 存储方式
+    - 判断数据类型
+    - 判断数组
+    - 数组方法
+      - slice 和 splice
+      - map forEach for
+        - 提前退出
+    - 类数组
+      - 是什么
+      - 转数组
+    - 迭代器
+  - let 和 const
+    - 区别
+    - 暂时死区
+  - 隐式转换
+    - ToPrimitive
+    - ToString
+- [ ] 函数
+  - 箭头函数
+  - bind / call / apply
+    - 差异
+    - 手写
+  - arguements
+  - 高阶函数
+    - 柯里化
+- [ ] 对象
+  - class
+  - 创建对象过程
+    - Object.create
+  - == === Object.is
+  - 继承
+    - 多种手写
+  - proxy / defineProperty
+  - 深浅拷贝
+- [ ] 作用域
+  - this
+- [ ] 执行栈
+- [ ] 原型 / 原型链
+- [ ] 闭包
+  - 局部变量不会被回收
+  - 优缺点
+  - for(var i = 1; i <= 5; i ++ ) setTimeout(() => console.log(i))
+    - 结果
+    - 不变动循环体, 修改其他正确输出
+    - 变动循环体, 不修改 setTimeout 正确输出
+  - 内存泄漏
+    - 检测
+- [ ] Promise
+  - 手写
+  - 方法
+    - 作用
+    - 手写
+  - promisePool
+  - 场景
+  - async / await 
+- [ ] 事件流
+  - 捕获
+  - 冒泡
+  - 顺序
+  - 事件代理
+- [ ] 事件循环
+  - 宏任务
+  - 微任务
+  - 输出题
+- [ ] 事件处理
+  - onClick
+  - onRezie 监听dom
+  - 判断元素在可视区
+    - 宽高参数
+    - 设备宽高比
+  - setTimeout 和 setInterval
+    - setTimeout 实现 setInterval
+- [ ] 模块化
+  - import 和 node require 区别
+  - ESM
+- [ ] 渲染
+  - 渲染进程
+  - 阻塞渲染
+  - 同步 和 异步
+- [ ] V8
+  - 垃圾回收
+- [ ] function 前叹号
+- [ ] 如何让(a===1&&a===2&&a===3)的值为true
+
+## TS
+- [ ] 操作符
+- [ ] 装饰器
+- [ ] never
+- [ ] unknow
+- [ ] as
+- [ ] 类型体操 
+  - https://github.com/type-challenges/type-challenges
+
+## Vue
+- [ ] Vue 设计
+  - MVVM 
+    - 作用
+    - 数据驱动试图为什么可以实现数据解耦, 解什么耦, 谁解耦
+  - SPA
+    - 首屏加载
+  - Vue优点
+  - 与其他框架(|无框架)区别
+- [ ] 生命周期
+  - v2、v3
+  - (父子)执行顺序
+  - setup(v3) 生命周期
+- [ ] 响应式
+  - v2、v3区别
+    - v2 响应式丢失
+    - v2 响应式处理数组
+  - 虚拟 DOM
+    - 真实 DOM 差异
+    - svelte 不采用虚拟 DOM 原因
+- [ ] 编译
+  - template 到 render
+  - complier 实现
+  - Vue.extend 和 Vue.component
+  - Vue.use
+- [ ] 选项式 和 组合式
+  - composition 优点
+  - hook 优点
+  - hook 如何实现绑定
+  - 有了 mixin 还使用 composition
+  - ref、reactive
+- [ ] data 
+  - 为什么是函数
+- [ ] watch
+  - deep 实现
+- [ ] computed
+  - 实现
+  - watch 区别
+- [ ] v-if、v-show
+- [ ] v-for
+  - key 
+    - index 作为key
+    - v2 就地复用
+- [ ] v-model
+  - 双向绑定
+- [ ] v-html
+- [ ] 自定义指令
+- [ ] 修饰符
+- [ ] 样式
+  - css scoped 
+    - 实现原理
+    - data-id
+  - class 与 style 动态绑定
+  - 样式透传
+- [ ] Vue.$set、Vue.$delete
+- [ ] 强刷页面
+- [ ] keep-alive
+  - 实现原理
+  - 生命周期
+  - 常用属性
+  - 渲染和传统组件区别
+  - render 函数
+  - 如何处理 slot
+- [ ] nextTick
+- [ ] slot
+- [ ] mixin
+- [ ] 组件
+  - 全局注册 / 局部注册
+  - 子组件改变父组件数据(单向数据流)
+- [ ] 插件
+- [ ] 组件通信
+  - emitBus 发布订阅
+  - 单向数据流
+  - .sync 和 model 区别
+- [ ] Teleport
+- [ ] Fragments
+- [ ] 异步组件
+- [ ] 函数式组件
+- [ ] v2、v3
+  - 区别
+  - v3 新增
+  - diff
+  - 2.7 向后兼容内容
+- [ ] vuex
+  - 实现原理
+  - action
+  - mutation
+    - 与 action 区别
+  - module
+    - namespace
+  - 持久化 vuex-persistedstate
+  - 使用场景
+    - vuex 与 localStorage
+    - vuex 与 pitia
+- [ ] vue-route
+  - hash / history
+  - 动态路由(传参方式)
+  - 实现
+  - router 与 route
+  - 路由守卫
+  - 路由重定向
+- [ ] Vueuse
+- [ ] Nuxt
+  - SSR
+- [ ] 源码
+> 待整理
+> 
+> https://www.nowcoder.com/discuss/513401725559021568
+
+
+## 后端
+- [ ] Node.js
+  - 命令行工具
+    - commander
+  - 中间件
+  - 事件循环
+  - 单线程
+    - 处理高并发
+      - 同一时间点, 多条请求, 并发处理
+- [ ] WebSocket
+  - 长连接
+- [ ] SQL
+- [ ] Redis
+- [ ] js 框架
+  - express
+  - koa
+    - 洋葱
+  - egg
+  - next
+- [ ] Swagger
+
+
+## 场景
+- [ ] D3
+  - 力导向图
+- [ ] Echart
+- [ ] Element
+  - 表单校验 validator
+- [ ] Three.js
+- [ ] Lodash
+- [ ] Jquery
+- [ ] Mock
+- [ ] 正则表达式
+- [ ] 小程序
+- [ ] 微前端
+- [ ] 跨端
+- [ ] Chrome 拓展
+- [ ] Vscode 插件
+- [ ] 油猴脚本
+- [ ] 桌面端应用
+  - 录屏 Electron
+- [ ] 爬虫
+- [ ] 抓包
+- [ ] 图床
+
+- [ ] 页面引导库
+  - driver.js
+- [ ] 打印
+- [ ] PDF
+- [ ] 水印
+- [ ] 二维码
+- [ ] 列表滚动
+  - vueSeamless
+- [ ] 文件上传
+  - 分片优化
+  - 断点续传
+    - 如何记录上传位置
+  - PDF 预览 (加速)
+  - 大体积图片预览
+    - 切割图片分块
+- [ ] 无感刷 Token
+- [ ] Axios 二次封装
+  - 请求 / 相应拦截器
+- [ ] 鉴权
+  - cookie
+  - jwt
+    - 三部分 
+  - vue 权限控制
+    - 按钮级别
+- [ ] 操作限制
+  - 截图
+  - 打开控制台
+- [ ] 海量数据渲染
+- [ ] 多标签页通信
+- [ ] 复制带链接
+
+## 浏览器
+- [ ] 缓存机制
+  - 强缓存
+  - 协商缓存
+- [ ] 渲染机制
+  - 回流、重绘
+    - 解决
+- [ ] 资源解析机制
+- [ ] 资源预加载 & 预连接
+- [ ] 进程与线程
+- [ ] 前端路由 
+- [ ] 跨页签通信 多tab通信
+- [ ] 渲染合成层
+- [ ] 白屏
+- [ ] RAIL
+- [ ] PWA / serverWorker
+- [ ] 跨页面通信
+- [ ] 计网
+  - http状态码
+  - https 密钥差异
+  - 输入url到呈现页面
+  - tcp / udp
+  - http
+    - keep-alive
+    - heads
+  - https
+  - DNS
+  - 计网模型
+  - websocket
+  - 即时通信
+- [ ] 跨域
+  - cors
+  - 产生
+  - 解决
+  - 预检
+- [ ] 安全
+  - xss / csrf
+    - 解决
+- [ ] 存储
+  - cookie
+    - 字段
+  - localStorage
+  - sessionStorage
+  - indexedDB
+
+## 工程化
+- [ ] Git
+  - 常用命令
+  - 冲突解决
+  - rebase
+  - 工具 
+    - cherry
+    - sourcetree
+- [ ] Webpack
+  - 基本配置
+    - 多路口
+  - 执行流程和生命周期
+  - 脚手架配置
+  - hash 策略
+  - npm run
+  - post css
+    - 在编译还是浏览器阶段
+  - dependancy Graph
+  - source map
+  - tree-shaking
+  - loader
+  - plugin
+  - 生产开发区别
+  - 优化
+    - 浏览器它加载资源的时候先是HTML然后是CSS最后才是JS，JS肯定会慢一些比如说字一开始文字是小的，然后jS加载完会变大，如何避免这个抖动？
+    - ...
+  - esbuild 和 rollup 构建流程区别
+    - 过程和产物一样吗
+    - 生产环境 rollup 和 esbuild 区别
+- [ ] Vite
+  - 与webpack区别
+  - 配置
+  - 首次加载优化
+  - 子依赖依赖父依赖避免重复安装
+- [ ] Docker
+- [ ] Ngnix
+- [ ] jest / Vuetest
+- [ ] eslint / Prettier
+- [ ] husky / lint-staged
+- [ ] babel
+- [ ] 埋点 / 监控
+- [ ] 文档生成
+- [ ] 国际化
+- [ ] CI / CD
+- [ ] monorepo
+- [ ] 性能优化
+  - https://juejin.cn/post/7199917360655155255#heading-19
+  - 虚拟列表
+  - CDN
+  - 懒加载
+- [ ] Debug
+  - 浏览器
+  - 小程序
+  - node
+
+## 设计模式
+- 常用
+- 代理
+- 装饰者
+- 单例
+- 观察、发布订阅
+
+## 书籍
+- vue 设计与实现
+- 红宝书
+- 你不知道的 js
+- nodejs 设计
