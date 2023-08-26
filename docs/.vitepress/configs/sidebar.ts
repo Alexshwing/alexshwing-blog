@@ -6,18 +6,22 @@ export const sidebar: DefaultTheme.Config['sidebar'] = {
             text: 'CSS',
             collapsed: false,
             items: [
+                { text: 'sticky', link: '/frontend/css/sticky' },
+                { text: 'getComputedStyle', link: '/frontend/css/getComputedStyle' },
                 { text: '文本溢出', link: '/frontend/css/textOverflow' },
                 { text: '水平垂直居中', link: '/frontend/css/center' },
                 { text: '隐藏元素', link: '/frontend/css/hiddenEl' },
                 { text: 'footer固定在底部', link: '/frontend/css/fixedAttheBottom' },
                 { text: '电梯导航', link: '/frontend/css/elevatorNavigation' },
                 { text: '根据背景色切换黑白文字', link: '/frontend/css/switchTextColorByBGColor' },
+                { text: '通用样式', link: '/frontend/css/commonStyle' },
             ]
         },
         {
             text: 'JavaScript',
             collapsed: false,
             items: [
+                { text: '事件循环', link: '/frontend/javascript/eventloop' },
                 { text: '执行上下文与作用域', link: '/frontend/javascript/executionContext' },
                 { text: 'MutationObserver', link: '/frontend/javascript/mutationObserver' },
                 { text: '手写', link: '/frontend/javascript/handWriting' },
