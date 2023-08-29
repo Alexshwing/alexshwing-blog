@@ -25,6 +25,7 @@ export const sidebar: DefaultTheme.Config['sidebar'] = {
                 { text: '执行上下文与作用域', link: '/frontend/javascript/executionContext' },
                 { text: 'MutationObserver', link: '/frontend/javascript/mutationObserver' },
                 { text: '手写', link: '/frontend/javascript/handWriting' },
+                { text: 'trick', link: '/frontend/javascript/trick' },
             ]
         },
 
@@ -129,6 +130,15 @@ export const sidebar: DefaultTheme.Config['sidebar'] = {
             ]
         },
         {
+            text: 'Npm',
+            collapsed: false,
+            items: [
+                { text: 'install', link: '/engineering/npm/install' },
+                { text: 'run', link: '/engineering/npm/run' },
+                { text: 'npx', link: '/engineering/npm/npx' },
+            ]
+        },
+        {
             text: 'Vite',
             collapsed: false,
         },
@@ -181,6 +191,14 @@ export const sidebar: DefaultTheme.Config['sidebar'] = {
                         { text: '周范围选择器', link: '/project/tool/element/weekRangePicker' },
                         { text: '样式', link: '/project/tool/element/style' },
                         { text: '踩坑', link: '/project/tool/element/trap' },
+                    ]
+                },
+                {
+                    text: 'Three.js',
+                    link: '/project/tool/three/basic',
+                    collapsed: true,
+                    items: [
+                        { text: '基础', link: '/project/tool/three/basic' },
                     ]
                 }
             ]

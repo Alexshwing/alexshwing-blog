@@ -24,6 +24,7 @@ export const nav: DefaultTheme.Config['nav'] = [
         items: [
             { text: 'Git', link: '/engineering/git/' },
             { text: 'Webpack', link: '/engineering/webpack/' },
+            { text: 'Npm', link: '/engineering/npm/install' },
         ]
     },
     {
