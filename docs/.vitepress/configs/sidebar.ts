@@ -199,6 +199,7 @@ export const sidebar: DefaultTheme.Config['sidebar'] = {
                     collapsed: true,
                     items: [
                         { text: '基础', link: '/project/tool/three/basic' },
+                        { text: 'Raycaster', link: '/project/tool/three/raycaster' },
                     ]
                 }
             ]
