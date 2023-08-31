@@ -21,6 +21,7 @@ export const sidebar: DefaultTheme.Config['sidebar'] = {
             text: 'JavaScript',
             collapsed: false,
             items: [
+                { text: '对象', link: '/frontend/javascript/object' },
                 { text: '事件循环', link: '/frontend/javascript/eventloop' },
                 { text: '执行上下文与作用域', link: '/frontend/javascript/executionContext' },
                 { text: 'MutationObserver', link: '/frontend/javascript/mutationObserver' },
