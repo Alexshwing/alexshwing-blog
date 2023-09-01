@@ -25,6 +25,7 @@ export const sidebar: DefaultTheme.Config['sidebar'] = {
                 { text: '事件循环', link: '/frontend/javascript/eventloop' },
                 { text: '执行上下文与作用域', link: '/frontend/javascript/executionContext' },
                 { text: 'MutationObserver', link: '/frontend/javascript/mutationObserver' },
+                { text: 'dispatchEvent', link: '/frontend/javascript/dispatchEvent' },
                 { text: '手写', link: '/frontend/javascript/handWriting' },
                 { text: 'trick', link: '/frontend/javascript/trick' },
             ]
@@ -44,6 +45,7 @@ export const sidebar: DefaultTheme.Config['sidebar'] = {
                 { text: '柯里化', link: '/frontend/Utils/curry' },
                 { text: '千分位格式化', link: '/frontend/Utils/thousandsSeparator' },
                 { text: '树', link: '/frontend/Utils/tree' },
+                { text: 'setTimeout 和 setInterval', link: '/frontend/Utils/timer' },
             ]
         },
         {
