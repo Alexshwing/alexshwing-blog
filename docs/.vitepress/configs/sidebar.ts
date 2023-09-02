@@ -103,8 +103,12 @@ export const sidebar: DefaultTheme.Config['sidebar'] = {
             ]
         },
         {
-            text: 'Vue-Router',
-            collapsed: false,
+            text: 'Vue Router',
+            collapsed: true,
+            items: [
+                { text: '基础', link: '/vue/router/basic' },
+                { text: '进阶', link: '/vue/router/advance' },
+            ]
         },
         {
             text: 'Pinia',
