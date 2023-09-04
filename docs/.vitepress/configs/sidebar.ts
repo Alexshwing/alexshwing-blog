@@ -46,6 +46,7 @@ export const sidebar: DefaultTheme.Config['sidebar'] = {
                 { text: '千分位格式化', link: '/frontend/Utils/thousandsSeparator' },
                 { text: '树', link: '/frontend/Utils/tree' },
                 { text: 'setTimeout 和 setInterval', link: '/frontend/Utils/timer' },
+                { text: 'PromisePool', link: '/frontend/Utils/promisePool' },
             ]
         },
         {
