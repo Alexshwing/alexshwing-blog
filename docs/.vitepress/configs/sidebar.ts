@@ -203,10 +203,11 @@ export const sidebar: DefaultTheme.Config['sidebar'] = {
                 },
                 {
                     text: 'Three.js',
-                    link: '/project/tool/three/basic',
+                    link: '/project/tool/three/',
                     collapsed: true,
                     items: [
                         { text: '基础', link: '/project/tool/three/basic' },
+                        { text: '模型', link: '/project/tool/three/model' },
                         { text: 'Raycaster', link: '/project/tool/three/raycaster' },
                     ]
                 }
