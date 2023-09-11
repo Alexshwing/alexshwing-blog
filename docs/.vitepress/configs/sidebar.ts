@@ -6,6 +6,9 @@ export const sidebar: DefaultTheme.Config['sidebar'] = {
             text: 'CSS',
             collapsed: false,
             items: [
+                { text: '负margin', link: '/frontend/css/negativeMargin' },
+                { text: '三栏布局', link: '/frontend/css/threeCol' },
+                { text: 'canvas', link: '/frontend/css/canvas' },
                 { text: 'sticky', link: '/frontend/css/sticky' },
                 { text: 'getComputedStyle', link: '/frontend/css/getComputedStyle' },
                 { text: '文本溢出', link: '/frontend/css/textOverflow' },
@@ -125,6 +128,7 @@ export const sidebar: DefaultTheme.Config['sidebar'] = {
             text: 'Git',
             collapsed: false,
             items: [
+                { text: '命令', link: '/engineering/git/command' },
                 { text: 'commit 规范', link: '/engineering/git/commit' },
                 { text: '代码行数统计', link: '/engineering/git/count' }
             ]
