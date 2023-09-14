@@ -26,6 +26,7 @@ export const sidebar: DefaultTheme.Config['sidebar'] = {
             items: [
                 { text: '对象', link: '/frontend/javascript/object' },
                 { text: '事件循环', link: '/frontend/javascript/eventloop' },
+                { text: '事件流', link: '/frontend/javascript/eventFlow' },
                 { text: '执行上下文与作用域', link: '/frontend/javascript/executionContext' },
                 { text: 'MutationObserver', link: '/frontend/javascript/mutationObserver' },
                 { text: 'dispatchEvent', link: '/frontend/javascript/dispatchEvent' },
