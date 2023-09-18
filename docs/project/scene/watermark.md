@@ -1,4 +1,7 @@
 # 水印
+
+用 canvas 把水印内容绘制出来并铺满屏幕, 设置 pointer-events 为 none ,让用户无法直接选中和操作该水印，然后用 MutationObserver 监听该元素，让用户无法删除该元素
+
 ```js
 export function __canvasWM({
   container = document.querySelector(".app-main"),

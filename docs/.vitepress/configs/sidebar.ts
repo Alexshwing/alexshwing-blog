@@ -37,7 +37,7 @@ export const sidebar: DefaultTheme.Config['sidebar'] = {
 
         {
             text: 'Utils',
-            collapsed: false,
+            collapsed: true,
             items: [
                 { text: '判断数据类型', link: '/frontend/Utils/type' },
                 { text: '解析 URL', link: '/frontend/Utils/parseUrlParams' },
@@ -85,6 +85,7 @@ export const sidebar: DefaultTheme.Config['sidebar'] = {
                 { text: 'Vue.$set', link: '/vue/vue2/set' },
                 { text: '组件渲染顺序', link: '/vue/vue2/componentsRenderOrder' },
                 { text: 'nextTick', link: '/vue/vue2/nextTick' },
+                { text: '过滤器', link: '/vue/vue2/filter' },
                 { text: '@hook', link: '/vue/vue2/hooks' },
                 { text: 'JSX', link: '/vue/vue2/JSX' },
                 { text: '替换路由', link: '/vue/vue2/replaceRoutes' },
@@ -171,7 +172,8 @@ export const sidebar: DefaultTheme.Config['sidebar'] = {
             items: [
                 { text: '打印', link: '/project/scene/print' },
                 { text: '水印', link: '/project/scene/watermark' },
-                { text: 'el-table 无限滚动', link: '/project/scene/inifinite-scroll' }
+                { text: 'el-table 无限滚动', link: '/project/scene/inifinite-scroll' },
+                { text: '禁用中文输入法的输入框', link: '/project/scene/limit-input' }
             ]
         },
         {
@@ -215,7 +217,21 @@ export const sidebar: DefaultTheme.Config['sidebar'] = {
                         { text: '模型', link: '/project/tool/three/model' },
                         { text: 'Raycaster', link: '/project/tool/three/raycaster' },
                     ]
-                }
+                },
+                {
+                    text: '正则表达式',
+                    link: '/project/tool/regex/',
+                    collapsed: true,
+                    items: [
+                        { text: '字符匹配', link: '/project/tool/regex/characterMatching' },
+                        { text: '位置匹配', link: '/project/tool/regex/positionMatching' },
+                        { text: '括号的作用', link: '/project/tool/regex/bracket' },
+                        { text: '回溯', link: '/project/tool/regex/backtrack' },
+                        { text: '拆分', link: '/project/tool/regex/split' },
+                        { text: '构建', link: '/project/tool/regex/_ structure' },
+                        { text: '编程', link: '/project/tool/regex/_program' },
+                    ]
+                },
             ]
         },
         {
