@@ -130,7 +130,8 @@ export const sidebar: DefaultTheme.Config['sidebar'] = {
             text: 'Git',
             collapsed: false,
             items: [
-                { text: '命令', link: '/engineering/git/command' },
+                { text: '常用命令', link: '/engineering/git/command' },
+                { text: '储藏', link: '/engineering/git/stash' },
                 { text: 'commit 规范', link: '/engineering/git/commit' },
                 { text: '代码行数统计', link: '/engineering/git/count' }
             ]
@@ -170,9 +171,9 @@ export const sidebar: DefaultTheme.Config['sidebar'] = {
             text: '场景',
             collapsed: false,
             items: [
+                { text: '工具库', link: '/project/scene/toolLibrary' },
                 { text: '打印', link: '/project/scene/print' },
                 { text: '水印', link: '/project/scene/watermark' },
-                { text: 'el-table 无限滚动', link: '/project/scene/inifinite-scroll' },
                 { text: '禁用中文输入法的输入框', link: '/project/scene/limit-input' }
             ]
         },
@@ -228,8 +229,8 @@ export const sidebar: DefaultTheme.Config['sidebar'] = {
                         { text: '括号的作用', link: '/project/tool/regex/bracket' },
                         { text: '回溯', link: '/project/tool/regex/backtrack' },
                         { text: '拆分', link: '/project/tool/regex/split' },
-                        { text: '构建', link: '/project/tool/regex/_ structure' },
-                        { text: '编程', link: '/project/tool/regex/_program' },
+                        { text: '构建', link: '/project/tool/regex/structure' },
+                        { text: '编程', link: '/project/tool/regex/program' },
                     ]
                 },
             ]
