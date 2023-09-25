@@ -172,6 +172,7 @@ export const sidebar: DefaultTheme.Config['sidebar'] = {
             collapsed: false,
             items: [
                 { text: '工具库', link: '/project/scene/toolLibrary' },
+                { text: '扫码', link: '/project/scene/scan' },
                 { text: '打印', link: '/project/scene/print' },
                 { text: '水印', link: '/project/scene/watermark' },
                 { text: '禁用中文输入法的输入框', link: '/project/scene/limit-input' }
@@ -238,7 +239,14 @@ export const sidebar: DefaultTheme.Config['sidebar'] = {
         {
             text: '个人项目',
             collapsed: false
-        }
+        },
+        {
+            text: '其他',
+            collapsed: false,
+            items: [
+                { text: 'codesandbox', link: '/project/other/codesandbox' },
+            ]
+        },
     ],
     '/backend/': [
         {
