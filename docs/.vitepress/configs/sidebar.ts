@@ -6,6 +6,7 @@ export const sidebar: DefaultTheme.Config['sidebar'] = {
             text: 'CSS',
             collapsed: false,
             items: [
+                { text: '移动端适配', link: '/frontend/css/mobileAdaptation' },
                 { text: '负margin', link: '/frontend/css/negativeMargin' },
                 { text: '三栏布局', link: '/frontend/css/threeCol' },
                 { text: 'canvas', link: '/frontend/css/canvas' },
