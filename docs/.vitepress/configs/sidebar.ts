@@ -35,7 +35,16 @@ export const sidebar: DefaultTheme.Config['sidebar'] = {
                 { text: 'trick', link: '/frontend/javascript/trick' },
             ]
         },
-
+        {
+            text: 'TypeScript',
+            collapsed: false,
+            items: [
+                { text: '类型系统', link: '/frontend/typescript/types' },
+                { text: '类型断言', link: '/frontend/typescript/assets' },
+                { text: '接口', link: '/frontend/typescript/interface' },
+                { text: '泛型', link: '/frontend/typescript/generics' },
+            ]
+        },
         {
             text: 'Utils',
             collapsed: true,
