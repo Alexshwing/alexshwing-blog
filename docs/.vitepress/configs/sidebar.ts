@@ -39,6 +39,8 @@ export const sidebar: DefaultTheme.Config['sidebar'] = {
             text: 'TypeScript',
             collapsed: false,
             items: [
+                { text: '对象', link: '/frontend/typescript/object' },
+                { text: '类', link: '/frontend/typescript/class' },
                 { text: '类型系统', link: '/frontend/typescript/types' },
                 { text: '类型断言', link: '/frontend/typescript/assets' },
                 { text: '接口', link: '/frontend/typescript/interface' },
@@ -92,6 +94,7 @@ export const sidebar: DefaultTheme.Config['sidebar'] = {
                 { text: 'data', link: '/vue/vue2/data' },
                 { text: 'v-if 和 v-show', link: '/vue/vue2/ifandshow' },
                 { text: 'v-if 和 v-for', link: '/vue/vue2/ifandfor' },
+                { text: 'key', link: '/vue/vue2/key' },
                 { text: 'Vue.$set', link: '/vue/vue2/set' },
                 { text: '组件渲染顺序', link: '/vue/vue2/componentsRenderOrder' },
                 { text: 'nextTick', link: '/vue/vue2/nextTick' },
