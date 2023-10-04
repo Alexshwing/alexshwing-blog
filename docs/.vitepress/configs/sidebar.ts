@@ -39,6 +39,8 @@ export const sidebar: DefaultTheme.Config['sidebar'] = {
             text: 'TypeScript',
             collapsed: false,
             items: [
+                { text: '元组', link: '/frontend/typescript/tuple' },
+                { text: '函数', link: '/frontend/typescript/function' },
                 { text: '对象', link: '/frontend/typescript/object' },
                 { text: '类', link: '/frontend/typescript/class' },
                 { text: '类型系统', link: '/frontend/typescript/types' },
