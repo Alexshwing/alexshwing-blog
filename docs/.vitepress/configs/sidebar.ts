@@ -39,14 +39,9 @@ export const sidebar: DefaultTheme.Config['sidebar'] = {
             text: 'TypeScript',
             collapsed: false,
             items: [
-                { text: '元组', link: '/frontend/typescript/tuple' },
-                { text: '函数', link: '/frontend/typescript/function' },
-                { text: '对象', link: '/frontend/typescript/object' },
-                { text: '类', link: '/frontend/typescript/class' },
-                { text: '类型系统', link: '/frontend/typescript/types' },
-                { text: '类型断言', link: '/frontend/typescript/assets' },
-                { text: '接口', link: '/frontend/typescript/interface' },
-                { text: '泛型', link: '/frontend/typescript/generics' },
+                { text: '基础', link: '/frontend/typescript/basic' },
+                { text: '装饰器', link: '/frontend/typescript/decorator' },
+                { text: '模块', link: '/frontend/typescript/module' },
             ]
         },
         {
