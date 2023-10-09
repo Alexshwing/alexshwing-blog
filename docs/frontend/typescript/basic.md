@@ -873,63 +873,175 @@ enum Color {
 console.log(Color[0]) // Red
 ```
 
-## 二十三、类型断言
 
-### 1、定义
-`value as Type`
+## 二十三、d.ts
 
-允许开发者在代码中"断言"某个值的类型, 告诉编译器此处的值是什么类型。
+### 1. 简介
+单独使用的模块, 一般会同时提供一个单独的类型声明文件, 把本文件的外部接口的所有类型都写在这个文件里面, 便于模块使用者了解接口, 也便于编辑器检查使用者的用法是否正确
 
-### 2、用法
-- 指定 unknown 类型的变量的具体类型
+类型声明文件里面只有类型代码，没有具体的代码实现。它的文件名一般为`[模块名].d.ts`的形式，其中的`d`表示 declaration（声明）。
+
 ```ts
-const value: unknown = 'alexshwing';
-const v1: string = value; // 报错
-const v2: string = value as string; 
+export function getArrayLength(arr: any[]): number;
+export const maxInterval: 12;
 ```
-- 指定联合类型值得具体类型
+类型声明文件也可以使用`export =`命令，输出对外接口
 ```ts
-const s1: number | string = 'alexshwing';
-const s2: string = s1 as string;
+declare module 'moment' {
+  function moment(): any;
+  export = moment
+}
+```
+除了使用`export =`，模块输出在类型声明文件中，也可以使用`export default`表示。
+```ts
+// 模块输出
+module.exports = 3.142;
+
+// 类型输出文件
+// 写法一
+declare const pi: number;
+export default pi;
+
+// 写法二
+declare const pi: number;
+export= pi;
 ```
 
-### 3、条件
+### 2. 类型声明文件来源
+1. 编辑器自动生成
+- 在`tsconfig.json`使用`declaration`, 编辑器就会在编译时自动生成单独的类型声明文件
 ```ts
-expr as T
-```
-`expr` 是实际的值, `T` 是类型断言, 它们必须满足的下面的条件:`expr` 是 `T` 的子类型, 或者`T` 是 `expr` 的子类型 (允许类型更加宽泛或更加精确)
-
-### 4、as const 断言
-如果没有声明变量类型, let 类型被推断为内置的基本类型之一, const 命令声明的变量被推断为值类型变量
-```ts
-let s1 = 'alexshwing' // 类型推断为 string
-const s2 = 'alexshwing' // 类型推断为 'alexshwing'
-let s3 = 'alexshwing' as const // 类型推断为 'alexshwing', 变量值不能再修改
-```
-- `as const` 告诉编译器, 推断类型时, 可以将这个值推断为常量, 即把 let 变量断言为 const 变量, 从而把内置的基本类型变更为值类型
-- `as const` 断言只能用于字面量, 不能用于变量、表达式
-
-### 5、非空断言
-在变量名后面添加感叹号`!`, 保证变量不为空
-
-### 6、断言函数
-断言函数用于保证函数参数符合某种类型。如果函数参数达不到要求, 就会抛出错误, 中断程序执行; 如果达到要求, 就不进行任何操作, 让代码按照正常流程运行
-```ts
-function isString(value: unknown): asserts value is string {
-  if (typeof value !== 'string') {
-    throw new Error('Not a string')
+{
+  "compilerOptions": {
+    "declaration": true
   }
 }
 ```
-- 断言函数只用于更清晰表达函数意图, 真正的检查需要开发者自己部署
-- 断言函数的 `asserts` 等同于 `void` 类型, 所以除了返回 `undefined` 和 `null` 之外都会报错
-- 断言参数非空可以使用工具类 `NonNullable<T>`
-- 断言某个参数为真(不等于`false`、`undefined`和`null`), 使用`asserts x`
-- 断言函数与类型保护函数(type guard)是两种不同的函数。断言函数不返回值, 而类型保护函数返回一个布尔值
+- 命令行开启这个选项
+```bash
+$  tsc --declaration
+```
+
+2. ts 内置类型文件
+
+内置声明文件在 ts 安装目录的 `lib` 文件夹内
+
+3. 外部模块的类型声明文件
+
+如果项目使用了外部的某个第三方代码库, 就需要这个库的类型声明文件
+
+(1) 这个库自带了类型声明文件: 这个库包含了`[vendor].d.ts`文件
+
+(2) 这个库没有自带, 可以通过社区制作的类型声明文件
+
+TypeScript 社区主要使用 [DefinitelyTyped 仓库](https://github.com/DefinitelyTyped/DefinitelyTyped)，各种类型声明文件都会提交到那里，已经包含了几千个第三方库。这些声明文件都会作为一个单独的库，发布到 npm 的`@types`名称空间之下。比如，jQuery 的类型声明文件就发布成`@types/jquery`这个库，使用时安装这个库就可以了。
+
+```bash
+$ npm install @types/jquery --save-dev
+```
+
+(3) 找不到类型声明文件, 需要自己写
 
 ```ts
-function isString (value: unknown): value is string {
-  return typeof value === 'string';
+declare type JQuery = any;
+declare var $: JQuery
+```
+也可以采用下面写法, 将整个外部模块的类型设为`any`
+```ts
+declare module '模块名'
+```
+
+### 3. 模块发布
+当前模块如果包含自己的类型声明文件，可以在 package.json 文件里面添加一个`types`字段或`typings`字段，指明类型声明文件的位置。
+
+```ts
+{
+  "name": "awesome",
+  "author": "Vandelay Industries",
+  "version": "1.0.0",
+  "main": "./lib/main.js",
+  "types": "./lib/main.d.ts"
 }
 ```
-> 上面示例就是一个类型保护函数`isString()`，作用是检查参数`value`是否为字符串。如果是的，返回`true`，否则返回`false`。该函数的返回值类型是`value is string`，其中的`is`是一个类型运算符，如果左侧的值符合右侧的类型，则返回`true`，否则返回`false`。
+
+注意，如果类型声明文件名为`index.d.ts`，且在项目的根目录中，那就不需要在`package.json`里面注明了。
+
+### 4. 三斜杠命令
+使用三斜杠命令, 加载类型声明文件
+
+1. `/// <reference path="./lib.d.ts" />`
+
+path 指定所引入文件的路径
+
+
+2. `/// <reference types="node" />`
+  
+types 参数用来告诉编辑器当前脚本依赖某个 DefinitelyTyped 类型库, 通常安装在`node_modules/@types`目录
+
+3. `/// <reference lib="es2017.string" />`
+
+允许脚本文件显式包含内置 lib 库, 等同于在`tsconfig.json`文件里面使用`lib`属性指定 lib 库。
+
+上面示例中，`es2017.string`对应的库文件就是`lib.es2017.string.d.ts`。
+
+
+## 二十四、注释
+- `// @ts-nocheck` 编辑器不对当前脚本进行类型检查
+- `// @ts-check` 编译器将对该脚本进行类型检查，不论是否启用了`checkJs`编译选项。
+- `// @ts-ignore` 编辑器不对下一行代码进行类型检查
+- `// @ts-expect-error` 当下一行有报错时, 不显示报错信息
+
+## 二十五、JSDoc
+ts 直接处理 js 文件时, 如果无法推断出类型, 会使用 js 脚本里面的 JSDoc 注释
+```js
+/**
+ * @params {string} somebody
+ */
+function say(somebody) {
+  console.log("hello" + somebody)
+}
+```
+- `@typeof` 创建自定义类型, 等于 ts 里面的类型别名
+```js
+/**
+ * @typeof {(number | string)} NumberLike
+ */
+
+// 等同于
+// type NumberLike = number | string
+```
+
+- `@type` 定义变量的类型
+```js
+/**
+ * @type {string}
+ */
+let a
+```
+
+- `@params` 定义函数参数的类型
+```js
+// 可选参数, 指定参数默认值
+/**
+ * @params {string} [x="bar"]
+ */
+function foo(x) {}
+```
+
+- `@return` 和 `@returns` 指定函数返回值的类型
+```js
+/**
+ * @return {boolean}
+ */
+function foo() { return true }
+```
+  
+- `@extends` 定义继承的基类
+```js
+/**
+ * @extends {Base}
+ */
+class Derived extends Base {}
+```
+- `@public`、`@protected`、`@private`分别指定类的公开成员、保护成员和私有成员。
+- `@readonly`指定只读成员。

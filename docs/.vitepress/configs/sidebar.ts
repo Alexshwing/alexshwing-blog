@@ -40,6 +40,7 @@ export const sidebar: DefaultTheme.Config['sidebar'] = {
             collapsed: false,
             items: [
                 { text: '基础', link: '/frontend/typescript/basic' },
+                { text: '类型', link: '/frontend/typescript/types' },
                 { text: '装饰器', link: '/frontend/typescript/decorator' },
                 { text: '模块', link: '/frontend/typescript/module' },
             ]
