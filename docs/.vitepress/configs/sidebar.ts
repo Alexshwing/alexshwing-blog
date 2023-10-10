@@ -29,6 +29,7 @@ export const sidebar: DefaultTheme.Config['sidebar'] = {
                 { text: '事件循环', link: '/frontend/javascript/eventloop' },
                 { text: '事件流', link: '/frontend/javascript/eventFlow' },
                 { text: '执行上下文与作用域', link: '/frontend/javascript/executionContext' },
+                { text: 'setTimeout', link: '/frontend/javascript/setTimeout' },
                 { text: 'MutationObserver', link: '/frontend/javascript/mutationObserver' },
                 { text: 'dispatchEvent', link: '/frontend/javascript/dispatchEvent' },
                 { text: '手写', link: '/frontend/javascript/handWriting' },
@@ -159,6 +160,7 @@ export const sidebar: DefaultTheme.Config['sidebar'] = {
             text: 'Npm',
             collapsed: false,
             items: [
+                { text: '剖析npm的包管理机制', link: '/engineering/npm/package' },
                 { text: 'install', link: '/engineering/npm/install' },
                 { text: 'run', link: '/engineering/npm/run' },
                 { text: 'npx', link: '/engineering/npm/npx' },
