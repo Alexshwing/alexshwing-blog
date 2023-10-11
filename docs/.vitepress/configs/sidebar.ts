@@ -165,6 +165,7 @@ export const sidebar: DefaultTheme.Config['sidebar'] = {
                 { text: 'install', link: '/engineering/npm/install' },
                 { text: 'run', link: '/engineering/npm/run' },
                 { text: 'npx', link: '/engineering/npm/npx' },
+                { text: 'pnpm', link: '/engineering/npm/pnpm' },
             ]
         },
         {
