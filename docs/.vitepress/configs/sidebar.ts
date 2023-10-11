@@ -102,6 +102,7 @@ export const sidebar: DefaultTheme.Config['sidebar'] = {
                 { text: 'JSX', link: '/vue/vue2/JSX' },
                 { text: '替换路由', link: '/vue/vue2/replaceRoutes' },
                 { text: '监听 SessionStorage', link: '/vue/vue2/watchSessionStorage' },
+                { text: '强制刷新页面', link: '/vue/vue2/refresh' },
             ]
         },
         {
@@ -185,6 +186,7 @@ export const sidebar: DefaultTheme.Config['sidebar'] = {
             collapsed: false,
             items: [
                 { text: '工具库', link: '/project/scene/toolLibrary' },
+                { text: '跨域', link: '/project/scene/crossDomain' },
                 { text: '扫码', link: '/project/scene/scan' },
                 { text: '打印', link: '/project/scene/print' },
                 { text: '水印', link: '/project/scene/watermark' },
