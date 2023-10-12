@@ -4,124 +4,58 @@
 ```vue
 <template>
   <div class="container">
-    <el-button type="primary" @click="printSelectedProductId" size="small"
-      >打印选中商品id</el-button
-    >
-    <el-button type="primary" @click="scrollToRow()" size="small"
-      >锚点到某一行</el-button
-    >
+    <el-button type="primary"
+      @click="printSelectedProductId"
+      size="small">打印选中商品id</el-button>
+    <el-button type="primary"
+      @click="scrollToRow()"
+      size="small">锚点到某一行</el-button>
     <el-table
       style="width: 100%"
       :data="tableData"
-      ref="table"
-      class="out-table"
-    >
-      <el-table-column type="expand">
+      ref="main"
+      @select-all="mainSelectAll"
+      @select="mainSelect"
+      @expand-change="mainExpandChange"
+      class="out-table">
+      <el-table-column
+        type="expand">
         <!-- 通过 Scoped slot 可以获取到 row, column, $index 和 store（table 内部的状态管理）的数据 -->
         <!-- @see https://element.eleme.cn/#/zh-CN/component/table 自定义列模板-->
-        <template slot-scope="scope">
+        <template
+          slot-scope="scope">
           <el-table
             :data="tableData[scope.$index].product"
-            :ref="`expandTable${scope.$index}`"
-          >
-            <el-table-column type="selection" width="50"></el-table-column>
-            <el-table-column prop="name" label="商品名称"></el-table-column>
-            <el-table-column prop="id" label="商品id"></el-table-column>
+            :ref="`sub${scope.$index}`"
+            @select="subSelect"
+            @select-all="(selection) => subSelectAll(selection, scope.row)">
+            <el-table-column
+              type="selection"
+              width="50"></el-table-column>
+            <el-table-column
+              prop="name"
+              label="商品名称"></el-table-column>
+            <el-table-column
+              prop="id"
+              label="商品id"></el-table-column>
           </el-table>
         </template>
       </el-table-column>
-      <el-table-column prop="name" label="姓名"></el-table-column>
-      <el-table-column prop="age" label="年龄"></el-table-column>
-      <el-table-column prop="date" label="日期"></el-table-column>
+      <el-table-column
+        type="selection"></el-table-column>
+
+      <el-table-column
+        prop="name"
+        label="姓名"></el-table-column>
+      <el-table-column
+        prop="age"
+        label="年龄"></el-table-column>
+      <el-table-column
+        prop="date"
+        label="日期"></el-table-column>
     </el-table>
   </div>
 </template>
-<script>
-export default {
-  data() {
-    return {
-      tableData: [
-        {
-          name: 'alexshwing',
-          age: 10,
-          date: '2016-05-02',
-          product: [
-            { name: 'apple', id: 0 },
-            { name: 'banana', id: 1 },
-          ],
-        },
-        {
-          name: 'tom',
-          age: 19,
-          date: '2016-05-03',
-          product: [
-            { name: 'orange', id: 3 },
-            { name: 'pineapple', id: 4 },
-            { name: 'pear', id: 5 },
-          ],
-        },
-        {
-          name: 'jack',
-          product: [
-            { name: 'apple', id: 6 },
-            { name: 'banana', id: 7 },
-          ],
-        },
-        {
-          name: 'mike',
-          product: [
-            { name: 'apple', id: 8 },
-            { name: 'banana', id: 9 },
-          ],
-        },
-        {
-          name: 'luke',
-          product: [
-            { name: 'apple', id: 10 },
-            { name: 'banana', id: 11 },
-          ],
-        },
-        {
-          name: 'rose',
-          product: [
-            { name: 'apple', id: 12 },
-            { name: 'banana', id: 13 },
-          ],
-        },
-        {
-          name: 'jerry',
-          product: [
-            { name: 'apple', id: 14 },
-            { name: 'banana', id: 15 },
-          ],
-        },
-        {
-          name: 'roy',
-          product: [
-            { name: 'apple', id: 16 },
-            { name: 'banana', id: 17 },
-          ],
-        },
-        {
-          name: 'james',
-          product: [
-            { name: 'apple', id: 18 },
-            { name: 'banana', id: 19 },
-          ],
-        },
-        {
-          name: 'anthony',
-          product: [
-            { name: 'apple', id: 20 },
-            { name: 'banana', id: 21 },
-          ],
-        },
-      ],
-    }
-  },
-}
-</script>
-
 ```
 ## 二. 获取展开行内选中项
 ```javascript
@@ -142,7 +76,7 @@ function getAllExpandTable(tableName) {
 },
 // 打印选中商品id
 function printSelectedProductId() {
-  const expandTableList = this.getAllExpandTable('expandTable')
+  const expandTableList = this.getAllExpandTable('sub')
   const selectedProductIdList = expandTableList.flatMap(
     ({ selection = [] }) => selection.map(({ id }) => id)
   )
@@ -153,18 +87,14 @@ function printSelectedProductId() {
 ```javascript
 function scrollToRow(pos = 8) {
     // 获取最外层表格ref
-    const tableRef = this.$refs.table
+    const tableRef = this.$refs['main']
     // 获取所有表格行
-    const allTableRows = Array.from(
-      tableRef.$el.querySelectorAll('.el-table__row')
-    )
+    const allTableRows = Array.from(tableRef.$el.querySelectorAll('.el-table__row'))
     // 过滤掉`展开行内表格行`, 只保留`外层表格行`
     const outTableRows = allTableRows.filter((row) =>
-      row.parentNode.parentNode.parentNode.parentNode.classList.contains(
-        'out-table'
-      )
+      row.parentNode.parentNode.parentNode.parentNode.classList.contains('out-table')
     )
-    this.$refs.table.toggleRowExpansion(this.tableData[pos], true)
+    this.$refs['main'].toggleRowExpansion(this.tableData[pos], true)
     const el = outTableRows[pos]
     const rect = el.getBoundingClientRect()
     let top = rect.top
@@ -174,10 +104,101 @@ function scrollToRow(pos = 8) {
       document.body.scrollTop || //chrome
       window.pageYOffset //safari
     top += scrollTop
-
     window.scrollTo({
       top,
       behavior: 'smooth',
     })
   },
+```
+## 四、选择器父子联动
+```vue
+<script>
+export default {
+  methods: {
+    // 外层全选
+    async mainSelectAll(selection) {
+      if (selection.length === 0) {
+        this.$refs['main'].data.forEach(async (_, index) => {
+          if (!!this.$refs[`sub${index}`]) {
+            await this.$refs[`sub${index}`].clearSelection()
+          }
+          this.selectedRow.has(index) && this.selectedRow.delete(index)
+        })
+      } else {
+        this.tableData.forEach(async (item) => {
+          this.mainSelect(Array.of(item), item)
+        })
+      }
+    },
+    // 外层单选
+    async mainSelect(selection, row) {
+      const isSelected = selection.includes(row)
+      const rowIndex = this.tableData.findIndex((item) => item.id === row.id)
+      if (isSelected) {
+        if (`sub${rowIndex}` in this.$refs && !!this.$refs[`sub${rowIndex}`]) {
+          this.selectedRow.add(rowIndex)
+          await this.$refs[`sub${rowIndex}`].toggleAllSelection()
+        } else {
+          this.selectedRow.add(rowIndex)
+        }
+      } else {
+        if (`sub${rowIndex}` in this.$refs && !!this.$refs[`sub${rowIndex}`]) {
+          this.selectedRow.has(rowIndex) && this.selectedRow.delete(rowIndex)
+          await this.$refs[`sub${rowIndex}`].clearSelection()
+        } else {
+          this.selectedRow.has(rowIndex) && this.selectedRow.delete(rowIndex)
+        }
+      }
+    },
+    // 内层全选
+    async subSelectAll(selection, faRow) {
+      const faIndex = this.tableData.findIndex((item) => item.id === faRow.id)
+      if (selection.length === 0) {
+        this.selectedRow.has(faIndex) && this.selectedRow.delete(faIndex)
+
+        await this.$refs['main'].toggleRowSelection(faRow, false)
+      } else {
+        this.selectedRow.add(faIndex)
+        await this.$refs['main'].toggleRowSelection(faRow, true)
+      }
+    },
+    // 内层单选
+    async subSelect(selection, row) {
+      this.$nextTick(async () => {
+        const isSubSelected = selection.includes(row)
+        const faIndex = this.tableData.findIndex((item) => item.id === row.pid)
+        const faRow = this.tableData.find((item) => item.id === row.pid)
+        if (isSubSelected) {
+          const isFaSelectAll = this.$refs[`sub${faIndex}`].store.states.isAllSelected
+
+          if (isFaSelectAll) {
+            this.selectedRow.add(faIndex)
+          }
+          await this.$refs['main'].toggleRowSelection(faRow, isFaSelectAll)
+        } else {
+          this.selectedRow.has(faIndex) && this.selectedRow.delete(faIndex)
+          await this.$refs['main'].toggleRowSelection(faRow, false)
+        }
+      })
+    },
+    // 外层展开行状态变化
+    mainExpandChange(row, expandedRows) {
+      const isExpanded = expandedRows.includes(row)
+      if (isExpanded) {
+        const rowIndex = this.tableData.findIndex((item) => item.id === row.id)
+        if (this.selectedRow.has(rowIndex)) {
+          const curIndexInTableData = this.tableData.findIndex((item) => item.id === row.id)
+
+          this.$nextTick(() => {
+            const children = this.tableData[curIndexInTableData].product
+            children.forEach((child) => {
+              this.$refs[`sub${curIndexInTableData}`].toggleRowSelection(child, true)
+            })
+          })
+        }
+      }
+    },
+  }
+}
+</script>
 ```
