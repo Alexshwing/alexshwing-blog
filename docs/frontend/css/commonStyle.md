@@ -46,3 +46,6 @@
 
 </html>
 ```
+
+## 一些样式
+- 设置自动滚动定位的间距 `scroll-padding` 和 `scroll-margin`

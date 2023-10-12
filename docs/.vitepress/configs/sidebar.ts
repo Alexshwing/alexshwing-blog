@@ -9,6 +9,7 @@ export const sidebar: DefaultTheme.Config['sidebar'] = {
                 { text: '移动端适配', link: '/frontend/css/mobileAdaptation' },
                 { text: '负margin', link: '/frontend/css/negativeMargin' },
                 { text: '三栏布局', link: '/frontend/css/threeCol' },
+                { text: '判断元素在可视区范围', link: '/frontend/css/isElementInViewport' },
                 { text: 'canvas', link: '/frontend/css/canvas' },
                 { text: 'sticky', link: '/frontend/css/sticky' },
                 { text: 'getComputedStyle', link: '/frontend/css/getComputedStyle' },
@@ -191,7 +192,8 @@ export const sidebar: DefaultTheme.Config['sidebar'] = {
                 { text: '扫码', link: '/project/scene/scan' },
                 { text: '打印', link: '/project/scene/print' },
                 { text: '水印', link: '/project/scene/watermark' },
-                { text: '禁用中文输入法的输入框', link: '/project/scene/limit-input' }
+                { text: '禁用中文输入法的输入框', link: '/project/scene/limit-input' },
+                { text: '竞态', link: '/project/scene/raceCondition' }
             ]
         },
         {
