@@ -45,6 +45,7 @@ export const sidebar: DefaultTheme.Config['sidebar'] = {
                 { text: '类型', link: '/frontend/typescript/types' },
                 { text: '装饰器', link: '/frontend/typescript/decorator' },
                 { text: '模块', link: '/frontend/typescript/module' },
+                { text: 'TypeScript 类型体操通关秘籍', link: '/frontend/typescript/gymnastics' },
             ]
         },
         {
